@@ -1,0 +1,110 @@
+* {
+    font-family: 'Balsamiq Sans';
+    color: rgb(23, 44, 87);
+}
+/*Navbar*/
+nav {
+    background: rgba(23, 44, 87, 0.93);
+    padding: 0 !important;
+}
+nav a {
+    border-radius: 5px;
+    font-size: 20px;
+}
+nav a:hover, .navbar-toggler:hover {
+    background: #764E3D;
+    color: white;
+    transition: color;
+    transition: background-color 0.5s ease;
+}
+.navbar-brand {
+    font-size: 25px;
+    letter-spacing: 4px;
+}
+/*Main div*/
+.main {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    background-image: url("images/background2.jpg");
+    opacity: 40%;
+    z-index: -100;
+}
+.container {
+    width: 60% !important;
+}
+/*Card and */
+.card {
+    top: 25px;
+    max-height: 100%;
+}
+.card img {
+    width: 70%;
+    margin-left: 12%;
+}
+#formAdd button, #formNewUsername button {
+    background: rgb(23, 44, 87);
+    color: white;
+}
+#formAdd button:hover, #formNewUsername button:hover {
+    background: rgb(40, 78, 151);
+}
+/*Play game img and btn*/
+#play-btn {
+    background-color: transparent;
+    border: none;
+}
+i:hover {
+    color: rgb(40, 78, 151);
+    transition: color;
+    transition: color 0.5s ease !important;
+}
+.img-wrapper {
+    position: relative;
+}
+.img-responsive {
+    width: 100%;
+    height: auto;
+}
+.img-overlay {
+    position: absolute;
+    bottom: 45%;
+    left: 27%;
+    top: 25%;
+    right: 25%;
+    text-align: center;
+}
+.img-overlay:before {
+    content: ' ';
+    display: block;
+    /* adjust 'height' to position overlay content vertically */
+    height: 50%;
+}
+/*Mobiles and tablets*/
+@media only screen and (max-width: 1000px) {
+    .container {
+        width: 100% !important;
+    }
+    .img-overlay {
+        bottom: 60%;
+        left: 27%;
+        top: 25%;
+        right: 25%;
+    }
+    nav {
+        padding: 10px !important;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .navbar-brand {
+        font-size: 20px;
+    }
+    .img-overlay {
+        bottom: 40%;
+        left: 27%;
+        top: 25%;
+        right: 25%;
+    }
+}
