@@ -16,7 +16,7 @@
 <body>
 <div id="hide" class="d-none">
     <!--  Navbar  -->
-    <nav id="nav" class="navbar navbar-dark navbar-expand-lg sticky-top position-absolute w-100">
+    <nav class="navbar navbar-dark navbar-expand-lg sticky-top position-absolute w-100">
         <!--  Navbar brand  -->
         <span class="navbar-brand p-0 pl-3" href="#">
         Zanimljiva ge<img src="images/earth.png" width="45" height="45" class="d-inline-block">grafija
@@ -38,7 +38,7 @@
                 <li class="nav-item">
                     <a class="nav-link pl-3 pr-3" href="#">
                         <i class="fa fa-play"></i>
-                        Igra
+                        Igraj
                     </a>
                 </li>
                 <li class="nav-item">
@@ -60,54 +60,20 @@
     <div class="container position-relative">
         <div class="card-deck">
             <div class="card bg-white">
-                <div class="card-body">
-                    <h5 class="text-center">Započni igru</h5>
-                    <div class="img-wrapper">
-                        <img class="img-responsive" src="images/play.png" alt="Card image cap">
-                        <div class="img-overlay">
-                            <button class="b-0" id="play-btn"><i class="fa fa-play fa-3x"></i></button>
-                        </div>
-                    </div>
-                    <p class="text-center pt-3">ili</p>
-                    <form id="formNewUsername">
-                        <div class="form-group">
-                            <label for="newUsername">Promeni username:</label>
-                            <input type="text" class="form-control" id="newUsername" placeholder='Username..'>
-                        </div>
-                        <button type="submit" class="btn btn-block">Promeni</button>
-                    </form>
-                    <div id="divUpdatedUsername" class="text-center">
-                        <!--  Error message  -->
-                    </div>
+                <div class="card-header text-center p-2">
+                    <h1><i class="fa fa-trophy text-warning"></i> Hall of Fame <i class="fa fa-trophy text-warning"></i>
+                    </h1>
+                    <p class="m-0">Korisnici sa najvećim brojem unetih pojmova</p>
                 </div>
-            </div>
-            <div class="card bg-white">
                 <div class="card-body">
-                    <h5 class="text-center">Dodaj nov pojam</h5>
-                    <img class="card-img-top" src="images/book.png" alt="Card image cap">
-                    <form class="pt-3" id="formAdd">
-                        <div class="form-group">
-                            <label for="categories">Izaberi kategoriju:</label>
-                            <select class="form-control" id="categories">
-                                <option selected="true" disabled>Kategorije..</option>
-                                <option value="Država">Država</option>
-                                <option value="Grad">Grad</option>
-                                <option value="Reka">Reka</option>
-                                <option value="Planina">Planina</option>
-                                <option value="Životinja">Životinja</option>
-                                <option value="Biljka">Biljka</option>
-                                <option value="Predmet">Predmet</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="newTerm">Napiši nov pojam:</label>
-                            <input type="text" class="form-control" id="newTerm" placeholder='Pojam..'>
-                        </div>
-                        <button type="submit" class="btn btn-block">Dodaj</button>
-                    </form>
-                    <div id="divNewTerm" class="text-center">
-                        <!--  Error message  -->
-                    </div>
+                    <table>
+                        <tr id="tr-1">
+                            <!--  Medal images  -->
+                        </tr>
+                        <tr id="tr-2">
+                            <!--  List of most active users  -->
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
@@ -147,7 +113,6 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
 <!-- JS -->
-<script src="js/app.js" type="module"></script>
-<script src="js/enterTerms.js" type="module"></script>
+<script src="js/hallOfFame.js" type="module"></script>
 </body>
 </html>

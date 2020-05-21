@@ -1,6 +1,9 @@
 * {
     font-family: 'Balsamiq Sans';
-    color: rgb(23, 44, 87);
+    color: rgb(38, 51, 83);
+}
+body {
+    position: relative;
 }
 /*Navbar*/
 nav {
@@ -21,6 +24,9 @@ nav a:hover, .navbar-toggler:hover {
     font-size: 25px;
     letter-spacing: 4px;
 }
+nav i {
+    color: #c3c3c3;
+}
 /*Main div*/
 .main {
     top: 0;
@@ -28,16 +34,16 @@ nav a:hover, .navbar-toggler:hover {
     bottom: 0;
     right: 0;
     position: absolute;
-    background-image: url("images/background2.jpg");
+    background-image: url("../images/background2.jpg");
     opacity: 40%;
     z-index: -100;
 }
 .container {
     width: 60% !important;
 }
-/*Card and */
+/*Card and forms*/
 .card {
-    top: 25px;
+    top: 100px;
     max-height: 100%;
 }
 .card img {
@@ -45,7 +51,7 @@ nav a:hover, .navbar-toggler:hover {
     margin-left: 12%;
 }
 #formAdd button, #formNewUsername button {
-    background: rgb(23, 44, 87);
+    background: rgb(38, 51, 83);
     color: white;
 }
 #formAdd button:hover, #formNewUsername button:hover {
@@ -56,11 +62,12 @@ nav a:hover, .navbar-toggler:hover {
     background-color: transparent;
     border: none;
 }
-i:hover {
+#play-btn i:hover {
     color: rgb(40, 78, 151);
     transition: color;
     transition: color 0.5s ease !important;
 }
+/*Play button wrapper*/
 .img-wrapper {
     position: relative;
 }
@@ -81,6 +88,14 @@ i:hover {
     display: block;
     /* adjust 'height' to position overlay content vertically */
     height: 50%;
+}
+/*Leadbord*/
+td {
+    width: 20%;
+    text-align: center !important;
+}
+td img {
+    margin: 0 !important;
 }
 /*Mobiles and tablets*/
 @media only screen and (max-width: 1000px) {
@@ -106,5 +121,8 @@ i:hover {
         left: 27%;
         top: 25%;
         right: 25%;
+    }
+    #hello {
+        padding: 0 !important;
     }
 }
