@@ -177,4 +177,14 @@ export class GeoUI {
 
         return form;
     }
+
+    modalResult(playerAnswers, computerAnswers, playerScores, computerScores, modalPlayerAnswers, modalComputerAnswers, modalPlayerScore, modalComputerScore) {
+        console.log(modalPlayerScore[3]);
+        for(let i = 0; i < 7; i++) {
+            modalPlayerAnswers[i].innerText = playerAnswers[i];
+            modalComputerAnswers[i].innerText = computerAnswers[i];
+            modalPlayerScore[i].innerText = playerScores[i];
+            modalComputerScore[i].innerText = computerScores[i];
+        }
+    }
 }

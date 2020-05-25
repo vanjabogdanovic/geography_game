@@ -128,15 +128,15 @@ btnModal.addEventListener('click', () => {
 
 //enter
 // let wordArray = [];
-// let words = 'Antilopa Ajkula Ara Albatros Bubamara Bizon Bivo Babun Boa Cvrčak Činčila Čavka Čaplja Ćurka Ćuk Deverika Detlić Drozd Dabar Kameleon Kengur Kuna Raža Emu Flamingo Foka Fazan Galeb Gavran Golub Glista Gusenica Grgeč Grdoba Haringa Hrčak Hijena Irvas Iverak Jazavac Jegulja Jež Jelen Jesetra Klen Karaš Kolibri Kuna Lav Lemur Lasta Losos Ljiljak Medved Muflon Majmun Noj Nilskikonj Nosorog Oslić Orao Okapi Puma Pas Panda Pauk Papagaj Prepelica Rak Roda Ris Rakun Som Smuđ Sova Soko Slepimiš Srna Štuka Šišmiš Ševa Šljuka Šaran Šakal Tigar Tvor Tuna Tetreb Utva Vuk Veverica Vaška Zebra Zeba Zec Zmija Ždral Žaba';
+// let words = 'Avala Ararat Atos Beljanica Bjelolasica Bjelašnica Cer Crnivrh Crvanj Cincar Čemerno Čemernik Čabulja Čvrsnica Ćićarija Dinara Durmitor Dukat Dimitor Džepskaplanina Đedinskaplanina Elgon Fruškagora Fudži Grmeč Goč Golija Golak Hrgud Hajla Hum Igman Ida Ivanščica Jastrebac Juhor Jelica Jagodnja Kosmaj Kopaonik Kukavica Kozara Lovćen Leotar Lučevik Ljubišnja Ljubuša Ljubić Maljen Mučanj Maglić Nidže Nanos Ninaja Njegoš Olimp Ozren Orjen Povlen Paštrik Pobijenik Radan Rogozna Rtanj Rujen Stolovi Suvaplanina Staraplana Seličevica Šator Šomrda Šarplanina Tara Tavor Tresibaba Tupižnica Učka Uzlomac Vlašić Vitorog Vodno Zlatar Zlatibor Zelengora Žljeb Željin ';
 // wordArray = words.split(' ');
 //
 // wordArray.forEach(word => {
 //     console.log(word);
-//     geo.checkIfExists('Životinja', word, data => {
+//     geo.checkIfExists('Planina', word, data => {
 //         if (data) {
 //             console.log(true);
-//             geo.newTerm('Životinja', word);
+//             geo.newTerm('Planina', word);
 //         }
 //     })
 // });

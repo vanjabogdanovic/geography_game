@@ -30,6 +30,9 @@ if (!localStorage.username) {
 // Hello message in navbar
 ui.hello(helloSpan);
 
+// Clear localStorage
+geo.clearLocalStorage();
+
 // Create play button
 let playImg = ui.playButtonImage(container);
 playImg.addEventListener('click', () => {
@@ -142,7 +145,6 @@ playImg.addEventListener('click', () => {
                         localStorage.setItem(categories[i] + '1', '0');
                         localStorage.setItem(categories[i] + '2', '0');
                     }
-                    console.log('loop')
                 })
             })
         }
@@ -154,24 +156,20 @@ playImg.addEventListener('click', () => {
                 clearInterval(timer);
                 console.log('answers');
                 // Players values
-                document.getElementById('player-drzava').textContent = localStorage.DržavaP;
-                document.getElementById('player-grad').textContent = localStorage.GradP;
-                document.getElementById('player-reka').textContent = localStorage.RekaP;
-                document.getElementById('player-planina').textContent = localStorage.PlaninaP;
-                document.getElementById('player-zivotinja').textContent = localStorage.ŽivotinjaP;
-                document.getElementById('player-biljka').textContent = localStorage.BiljkaP;
-                document.getElementById('player-predmet').textContent = localStorage.PredmetP;
+                let playerAnswers = [drzava, grad, reka, planina, zivotinja, biljka, predmet];
+                let modalPlayerAnswers = document.getElementsByClassName('player-answer');
 
                 // Computer values
-                document.getElementById('computer-drzava').textContent = localStorage.DržavaC;
-                document.getElementById('computer-grad').textContent = localStorage.GradC;
-                document.getElementById('computer-reka').textContent = localStorage.RekaC;
-                document.getElementById('computer-planina').textContent = localStorage.PlaninaC;
-                document.getElementById('computer-zivotinja').textContent = localStorage.ŽivotinjaC;
-                document.getElementById('computer-biljka').textContent = localStorage.BiljkaC;
-                document.getElementById('computer-predmet').textContent = localStorage.PredmetC;
+                let computerAnswers = [localStorage.DržavaC, localStorage.GradC, localStorage.RekaC, localStorage.PlaninaC, localStorage.ŽivotinjaC, localStorage.BiljkaC, localStorage.PredmetC];
+                let modalComputerAnswers = document.getElementsByClassName('computer-answer');
 
                 // LocalStorage player's and computer's score values (from string to integer)
+                let playerScores = [localStorage.Država1, localStorage.Grad1, localStorage.Reka1, localStorage.Planina1, localStorage.Životinja1, localStorage.Biljka1, localStorage.Predmet1];
+                let computerScores = [localStorage.Država2, localStorage.Grad2, localStorage.Reka2, localStorage.Planina2, localStorage.Životinja2, localStorage.Biljka2, localStorage.Predmet2];
+                let modalPlayerScores = document.getElementsByClassName('computer-score');
+                let modalComputerScores = document.getElementsByClassName('computer-score');
+
+                // Get scores from localStorage
                 let d1 = parseInt(localStorage.Država1);
                 let d2 = parseInt(localStorage.Država2);
                 let g1 = parseInt(localStorage.Grad1);
@@ -187,25 +185,6 @@ playImg.addEventListener('click', () => {
                 let pr1 = parseInt(localStorage.Predmet1);
                 let pr2 = parseInt(localStorage.Predmet2);
 
-                // Add player's score to modal table (td)
-                document.getElementById('player-drzava-poeni').textContent = d1;
-                document.getElementById('player-grad-poeni').textContent = g1;
-                document.getElementById('player-reka-poeni').textContent = r1;
-                document.getElementById('player-planina-poeni').textContent = p1;
-                document.getElementById('player-zivotinja-poeni').textContent = z1;
-                document.getElementById('player-biljka-poeni').textContent = b1;
-                document.getElementById('player-predmet-poeni').textContent = pr1;
-
-                // Add computer's score to modal table (td)
-                document.getElementById('computer-drzava-poeni').textContent = d2;
-                document.getElementById('computer-grad-poeni').textContent = g2;
-                document.getElementById('computer-reka-poeni').textContent = r2;
-                document.getElementById('computer-planina-poeni').textContent = p2;
-                document.getElementById('computer-zivotinja-poeni').textContent = z2;
-                document.getElementById('computer-biljka-poeni').textContent = b2;
-                document.getElementById('computer-predmet-poeni').textContent = pr2;
-
-
                 // Calculate score and add it to modal table
                 let playerScore = d1 + g1 + r1 + p1 + z1 + b1 + pr1;
                 let computerScore = d2 + g2 + r2 + p2 + z2 + b2 + pr2;
@@ -214,13 +193,16 @@ playImg.addEventListener('click', () => {
                 resultPlayer.textContent = username + ': ' + playerScore;
                 resultComputer.textContent = 'Kompjuter: ' + computerScore;
 
+                // Add answers and scores to modal table
+                ui.modalResult(playerAnswers, computerAnswers, playerScores, computerScores, modalPlayerAnswers, modalComputerAnswers, modalPlayerScores, modalComputerScores);
+
                 // Sweetalert winner or loser
                 if (playerScore > computerScore) {
                     ui.winnerOrLoser('images/winner.gif', 'Čestitamo!', 'Kompjuter je poražen!');
                 } else if (computerScore > playerScore) {
                     ui.winnerOrLoser('images/loser.gif', 'Žao nam je...', 'Kompjuter je pobedio.');
                 } else {
-                    ui.winnerOrLoser('images/loser.gif', 'Nerešeno!', 'Nema pobednika.');
+                    ui.winnerOrLoser('images/tie.gif', 'Nerešeno!', 'Nema pobednika.');
                 }
 
                 // Show modal with results
