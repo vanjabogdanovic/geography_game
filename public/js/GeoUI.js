@@ -178,13 +178,43 @@ export class GeoUI {
         return form;
     }
 
-    modalResult(playerAnswers, computerAnswers, playerScores, computerScores, modalPlayerAnswers, modalComputerAnswers, modalPlayerScore, modalComputerScore) {
-        console.log(modalPlayerScore[3]);
-        for(let i = 0; i < 7; i++) {
-            modalPlayerAnswers[i].innerText = playerAnswers[i];
-            modalComputerAnswers[i].innerText = computerAnswers[i];
-            modalPlayerScore[i].innerText = playerScores[i];
-            modalComputerScore[i].innerText = computerScores[i];
+    modalResult(allInfo, modalPlayerAnswers, modalComputerAnswers, modalPlayerScore, modalComputerScore, playerUsernameTd, resultPlayer, resultComputer, modalResult) {
+        let playerScore = 0;
+        let computerScore = 0;
+        let i = 0;
+
+        allInfo.forEach(info => {
+            let infoPlayer = info.player;
+            let infoComputer = info.computer;
+
+            modalPlayerAnswers[i].innerText = infoPlayer.answer;
+            modalComputerAnswers[i].innerText = infoComputer.answer;
+            modalPlayerScore[i].innerText = infoPlayer.score;
+            modalComputerScore[i].innerText = infoComputer.score;
+
+            // Calculate score and add it to modal table
+            playerScore += infoPlayer.score;
+            computerScore += infoComputer.score;
+
+            i++;
+        });
+
+        // Sweetalert winner or loser
+        if (playerScore > computerScore) {
+            this.winnerOrLoser('images/winner.gif', 'Čestitamo!', 'Kompjuter je poražen!');
+        } else if (computerScore > playerScore) {
+            this.winnerOrLoser('images/loser.gif', 'Žao nam je...', 'Kompjuter je pobedio.');
+        } else {
+            this.winnerOrLoser('images/tie.gif', 'Nerešeno!', 'Nema pobednika.');
         }
+
+        // Show score in modal
+        let username = localStorage.username;
+        playerUsernameTd.textContent = username;
+        resultPlayer.textContent = username + ': ' + playerScore;
+        resultComputer.textContent = 'Kompjuter: ' + computerScore;
+
+        // Show modal with results
+        modalResult.classList.add('d-block');
     }
 }

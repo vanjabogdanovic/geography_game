@@ -9,7 +9,7 @@ let formNewUsername = document.getElementById('formNewUsername');
 let divUpdatedUsername = document.getElementById('divUpdatedUsername');
 let divNewTerm = document.getElementById('divNewTerm');
 let hideDiv = document.getElementById('hide');
-let body = document.getElementsByTagName('body');
+let body = document.querySelector('body');
 let modal = document.getElementById('modal');
 let playBtn = document.getElementById('play-btn');
 let closeModal = document.getElementById('close-modal');
@@ -19,7 +19,7 @@ let btnModal = document.getElementById('btn-modal');
 
 // Enter username
 if(!localStorage.username) {
-    body[0].style.backgroundColor = 'rgb(38, 51, 83)';
+    body.style.backgroundColor = 'rgb(38, 51, 83)';
     localStorage.clear();
     ui.enterUsername();
 } else {
@@ -32,9 +32,6 @@ ui.hello(helloSpan);
 //Import Geo class
 import {Geo} from "./Geo.js";
 let geo = new Geo(localStorage.username);
-
-// Clear localStorage values from game;
-geo.clearLocalStorage();
 
 // Add new term
 formAdd.addEventListener('submit', e => {
@@ -126,17 +123,17 @@ btnModal.addEventListener('click', () => {
     }
 });
 
-//enter
+// enter
 // let wordArray = [];
-// let words = 'Avala Ararat Atos Beljanica Bjelolasica Bjelašnica Cer Crnivrh Crvanj Cincar Čemerno Čemernik Čabulja Čvrsnica Ćićarija Dinara Durmitor Dukat Dimitor Džepskaplanina Đedinskaplanina Elgon Fruškagora Fudži Grmeč Goč Golija Golak Hrgud Hajla Hum Igman Ida Ivanščica Jastrebac Juhor Jelica Jagodnja Kosmaj Kopaonik Kukavica Kozara Lovćen Leotar Lučevik Ljubišnja Ljubuša Ljubić Maljen Mučanj Maglić Nidže Nanos Ninaja Njegoš Olimp Ozren Orjen Povlen Paštrik Pobijenik Radan Rogozna Rtanj Rujen Stolovi Suvaplanina Staraplana Seličevica Šator Šomrda Šarplanina Tara Tavor Tresibaba Tupižnica Učka Uzlomac Vlašić Vitorog Vodno Zlatar Zlatibor Zelengora Žljeb Željin ';
+// let words = '';
 // wordArray = words.split(' ');
 //
 // wordArray.forEach(word => {
 //     console.log(word);
-//     geo.checkIfExists('Planina', word, data => {
+//     geo.checkIfExists('Država', word, data => {
 //         if (data) {
 //             console.log(true);
-//             geo.newTerm('Planina', word);
+//             geo.newTerm('Država', word);
 //         }
 //     })
 // });
@@ -144,7 +141,7 @@ btnModal.addEventListener('click', () => {
 //delete
 // db.collection("pojmovi")
 //     .where("korisnik", "==", 'vanja')
-//     // .where('pojam', '==', ' ')
+//     .where('pojam', '==', '')
 //     .get()
 //     .then( snapshot => {
 //         snapshot.docs.forEach( doc => {

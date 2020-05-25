@@ -159,24 +159,20 @@ export class Geo {
     randomTerm(letter, category, callback) {
         let term = false;
         this.geo
-            .where('pocetnoSlovo', '==', letter)
+            .where('pocetnoSlovo', '==', 'A')
             .where('kategorija', '==', category)
             .get()
             .then(snapshot => {
                 let chance = Math.random();
                 if (chance > 0.2) {
-                    const randomIndex = Math.floor(Math.random() * length);
-                    term = snapshot.docs[randomIndex].data().pojam;
+                    const randomIndex = Math.floor(Math.random() * snapshot.docs.length);
+                    let data = snapshot.docs[randomIndex];
+                    term = data && data !== undefined ? data.data().pojam : '/';
                 }
                 callback(term);
             })
             .catch(error => {
                 console.log(error);
             });
-    }
-    clearLocalStorage() {
-         let username = localStorage.username;
-         localStorage.clear();
-         localStorage.setItem('username', username);
     }
 }

@@ -7,14 +7,14 @@ let geo = new Geo(localStorage.username);
 
 // Get DOM elements
 let hideDiv = document.getElementById('hide');
-let body = document.getElementsByTagName('body');
+let body = document.querySelector('body');
 let helloSpan = document.getElementById('hello');
 let tr1 = document.getElementById('tr-1');
 let tr2 = document.getElementById('tr-2');
 
 // Enter username
 if(!localStorage.username) {
-    body[0].style.backgroundColor = 'rgb(38, 51, 83)';
+    body.style.backgroundColor = 'rgb(38, 51, 83)';
     ui.enterUsername();
 } else {
     hideDiv.classList.add('d-block');
@@ -22,9 +22,6 @@ if(!localStorage.username) {
 
 // Hello message in navbar
 ui.hello(helloSpan);
-
-// Clear localStorage values from game;
-geo.clearLocalStorage();
 
 // Show most active user
 geo.orderByUser( users => {

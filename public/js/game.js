@@ -10,7 +10,7 @@ let geo = new Geo(localStorage.username);
 // Get DOM elements
 let hideDiv = document.getElementById('hide');
 let helloSpan = document.getElementById('hello');
-let body = document.getElementsByTagName('body');
+let body = document.querySelector('body');
 let container = document.getElementById('container');
 let resultPlayer = document.getElementById('result-player');
 let resultComputer = document.getElementById('result-computer');
@@ -18,10 +18,14 @@ let playerUsernameTd = document.getElementById('player-username');
 let modalResult = document.getElementById('modal-result');
 let newGameBtn = document.getElementById('new-game-btn');
 let closeModal = document.getElementById('close-result');
+let modalPlayerAnswers = document.getElementsByClassName('player-answer');
+let modalComputerAnswers = document.getElementsByClassName('computer-answer');
+let modalPlayerScores = document.getElementsByClassName('player-score');
+let modalComputerScores = document.getElementsByClassName('computer-score');
 
 // Enter username
 if (!localStorage.username) {
-    body[0].style.backgroundColor = 'rgb(38, 51, 83)';
+    body.style.backgroundColor = 'rgb(38, 51, 83)';
     ui.enterUsername();
 } else {
     hideDiv.classList.add('d-block');
@@ -29,9 +33,6 @@ if (!localStorage.username) {
 
 // Hello message in navbar
 ui.hello(helloSpan);
-
-// Clear localStorage
-geo.clearLocalStorage();
 
 // Create play button
 let playImg = ui.playButtonImage(container);
@@ -90,147 +91,109 @@ playImg.addEventListener('click', () => {
         countdownText = "Vaša rešenja su poslata!";
         countdown.textContent = countdownText;
 
-        // Get values from game inputs (player's answers)
-        let drzava = document.getElementById('answer-drzava').value;
-        let grad = document.getElementById('answer-grad').value;
-        let reka = document.getElementById('answer-reka').value;
-        let planina = document.getElementById('answer-planina').value;
-        let zivotinja = document.getElementById('answer-zivotinja').value;
-        let biljka = document.getElementById('answer-biljka').value;
-        let predmet = document.getElementById('answer-predmet').value;
+        // Player's answers and category
+        let playerAnswers = [
+            {
+                'term': document.getElementById('answer-drzava').value,
+                'category': 'Država',
+            },
+            {
+                'term': document.getElementById('answer-grad').value,
+                'category': 'Grad',
+            },
+            {
+                'term': document.getElementById('answer-reka').value,
+                'category': 'Reka',
+            },
+            {
+                'term': document.getElementById('answer-planina').value,
+                'category': 'Planina',
+            },
+            {
+                'term': document.getElementById('answer-zivotinja').value,
+                'category': 'Životinja',
+            },
+            {
+                'term': document.getElementById('answer-biljka').value,
+                'category': 'Biljka',
+            },
+            {
+                'term': document.getElementById('answer-predmet').value,
+                'category': 'Predmet',
+            },
+        ];
 
-        let terms = [drzava, grad, reka, planina, zivotinja, biljka, predmet]; // all answers in array
-        let categories = ['Država', 'Grad', 'Reka', 'Planina', 'Životinja', 'Biljka', 'Predmet']; //all categories in array
-
+        // All info about user and computer score and answers
+        let allInfo = [];
         // Loop through all answers and categories
-        for (let i = 0; i < terms.length; i++) {
-            geo.specificLetterTerms(randomLetter, categories[i], geo.stringCheck(terms[i]), dataPlayer => { // players answers
-                geo.randomTerm(randomLetter, categories[i], dataComputer => { // generate random computer answers
-                    let term = geo.stringCheck(terms[i]);
-                    // Check the answers and add them to localStorage with score
-                    if (!dataComputer && !dataPlayer) { // If both computer and player don't know the answer
-                        console.log('1');
-                        localStorage.setItem(categories[i] + 'P', term);
-                        localStorage.setItem(categories[i] + 'C', 'Ne znam!');
-                        localStorage.setItem(categories[i] + '1', '0');
-                        localStorage.setItem(categories[i] + '2', '0');
-                    } else if (!dataComputer) { // If only computer don't know the answer
-                        console.log('2');
-                        localStorage.setItem(categories[i] + 'P', term);
-                        localStorage.setItem(categories[i] + 'C', 'Ne znam!');
-                        localStorage.setItem(categories[i] + '1', '15');
-                        localStorage.setItem(categories[i] + '2', '0');
-                    } else if (!dataPlayer) { // If player don't know the answer
-                        console.log('3');
-                        localStorage.setItem(categories[i] + 'P', term);
-                        localStorage.setItem(categories[i] + 'C', dataComputer);
-                        localStorage.setItem(categories[i] + '1', '0');
-                        localStorage.setItem(categories[i] + '2', '15');
-                    } else if (dataComputer == geo.stringCheck(terms[i])) { // If both computer and player have the same answer
-                        console.log('4');
-                        localStorage.setItem(categories[i] + 'P', term);
-                        localStorage.setItem(categories[i] + 'C', dataComputer);
-                        localStorage.setItem(categories[i] + '1', '5');
-                        localStorage.setItem(categories[i] + '2', '5');
-                    } else if (dataComputer != geo.stringCheck(terms[i])) { // If both computer and player know the answer, but it is not the same word
-                        console.log('5');
-                        localStorage.setItem(categories[i] + 'P', term);
-                        localStorage.setItem(categories[i] + 'C', dataComputer);
-                        localStorage.setItem(categories[i] + '1', '10');
-                        localStorage.setItem(categories[i] + '2', '10');
-                    } else {
-                        console.log('6');
-                        localStorage.setItem(categories[i] + 'P', term);
-                        localStorage.setItem(categories[i] + 'C', 'Ne znam!');
-                        localStorage.setItem(categories[i] + '1', '0');
-                        localStorage.setItem(categories[i] + '2', '0');
+        for (let i = 0; i < playerAnswers.length; i++) {
+            let term = geo.stringCheck(playerAnswers[i].term);
+            let category = playerAnswers[i].category;
+            geo.specificLetterTerms(randomLetter, category, term, dataPlayer => { // players answers
+                geo.randomTerm(randomLetter, category, dataComputer => { // generate random computer answers
+                    // Add all info to array
+                    allInfo.push(calculateScore(category, term, dataPlayer, dataComputer));
+                    if(i == playerAnswers.length - 1) {
+                        printResult(allInfo);
                     }
-                })
-            })
+                });
+            });
         }
-
-        // Wait until firebase finish
-        let timeout = 1;
-        let timer = setInterval(() => {
-            if (timeout < 1) {
-                clearInterval(timer);
-                console.log('answers');
-                // Players values
-                let playerAnswers = [drzava, grad, reka, planina, zivotinja, biljka, predmet];
-                let modalPlayerAnswers = document.getElementsByClassName('player-answer');
-
-                // Computer values
-                let computerAnswers = [localStorage.DržavaC, localStorage.GradC, localStorage.RekaC, localStorage.PlaninaC, localStorage.ŽivotinjaC, localStorage.BiljkaC, localStorage.PredmetC];
-                let modalComputerAnswers = document.getElementsByClassName('computer-answer');
-
-                // LocalStorage player's and computer's score values (from string to integer)
-                let playerScores = [localStorage.Država1, localStorage.Grad1, localStorage.Reka1, localStorage.Planina1, localStorage.Životinja1, localStorage.Biljka1, localStorage.Predmet1];
-                let computerScores = [localStorage.Država2, localStorage.Grad2, localStorage.Reka2, localStorage.Planina2, localStorage.Životinja2, localStorage.Biljka2, localStorage.Predmet2];
-                let modalPlayerScores = document.getElementsByClassName('computer-score');
-                let modalComputerScores = document.getElementsByClassName('computer-score');
-
-                // Get scores from localStorage
-                let d1 = parseInt(localStorage.Država1);
-                let d2 = parseInt(localStorage.Država2);
-                let g1 = parseInt(localStorage.Grad1);
-                let g2 = parseInt(localStorage.Grad2);
-                let r1 = parseInt(localStorage.Reka1);
-                let r2 = parseInt(localStorage.Reka2);
-                let p1 = parseInt(localStorage.Planina1);
-                let p2 = parseInt(localStorage.Planina2);
-                let z1 = parseInt(localStorage.Životinja1);
-                let z2 = parseInt(localStorage.Životinja2);
-                let b1 = parseInt(localStorage.Biljka1);
-                let b2 = parseInt(localStorage.Biljka2);
-                let pr1 = parseInt(localStorage.Predmet1);
-                let pr2 = parseInt(localStorage.Predmet2);
-
-                // Calculate score and add it to modal table
-                let playerScore = d1 + g1 + r1 + p1 + z1 + b1 + pr1;
-                let computerScore = d2 + g2 + r2 + p2 + z2 + b2 + pr2;
-                let username = localStorage.username;
-                playerUsernameTd.textContent = username;
-                resultPlayer.textContent = username + ': ' + playerScore;
-                resultComputer.textContent = 'Kompjuter: ' + computerScore;
-
-                // Add answers and scores to modal table
-                ui.modalResult(playerAnswers, computerAnswers, playerScores, computerScores, modalPlayerAnswers, modalComputerAnswers, modalPlayerScores, modalComputerScores);
-
-                // Sweetalert winner or loser
-                if (playerScore > computerScore) {
-                    ui.winnerOrLoser('images/winner.gif', 'Čestitamo!', 'Kompjuter je poražen!');
-                } else if (computerScore > playerScore) {
-                    ui.winnerOrLoser('images/loser.gif', 'Žao nam je...', 'Kompjuter je pobedio.');
-                } else {
-                    ui.winnerOrLoser('images/tie.gif', 'Nerešeno!', 'Nema pobednika.');
-                }
-
-                // Show modal with results
-                modalResult.classList.add('d-block');
-
-                // Clear localStorage when clicked on newGameButton from table modal
-                newGameBtn.addEventListener('click', () => {
-                    geo.clearLocalStorage();
-                    location.reload(); // reload page to start new game
-                });
-
-                // Close modal by clicking outside of modal
-                window.addEventListener('click', e => {
-                    if (e.target == modalResult) {
-                        modalResult.classList.remove('d-block');
-                        geo.clearLocalStorage();
-                        window.location = 'index.html'; // return to index page
-                    }
-                });
-                // Close modal by clicking on x button
-                closeModal.addEventListener('click', () => {
-                    modalResult.classList.remove('d-block');
-                    geo.clearLocalStorage();
-                    window.location = 'index.html'; // return to index page
-                });
-            }
-
-            timeout -= 1; // timer
-        }, 1000);
     });
 });
+let printResult = (allInfo) => {
+
+    // Add answers and scores to modal table
+    ui.modalResult(allInfo, modalPlayerAnswers, modalComputerAnswers, modalPlayerScores, modalComputerScores, playerUsernameTd, resultPlayer, resultComputer, modalResult);
+
+    // Clear localStorage when clicked on newGameButton from table modal
+    newGameBtn.addEventListener('click', () => {
+        location.reload(); // reload page to start new game
+    });
+
+    // Close modal by clicking outside of modal
+    window.addEventListener('click', e => {
+        if (e.target == modalResult) {
+            modalResult.classList.remove('d-block');
+            window.location = 'index.html'; // return to index page
+        }
+    });
+    // Close modal by clicking on x button
+    closeModal.addEventListener('click', () => {
+        modalResult.classList.remove('d-block');
+        window.location = 'index.html'; // return to index page
+    });
+};
+
+function calculateScore(category, term, dataPlayer, dataComputer) {
+    let data = {
+        player:{
+            'answer': term ? term : '/',
+            'category': category,
+            'score': 0,
+        },
+        computer:{
+            'answer': dataComputer ? dataComputer : '/',
+            'category': category,
+            'score': 0,
+        },
+    };
+    if(!dataComputer && !dataPlayer) {
+        data.player.score = 0;
+        data.computer.score = 0;
+    } else if (!dataComputer) { // If only computer don't know the answer
+        data.player.score = 15;
+        data.computer.score = 0;
+    } else if (!dataPlayer) { // If player don't know the answer
+        data.player.score = 0;
+        data.computer.score = 15;
+    } else if (dataComputer == term) { // If both computer and player have the same answer
+        data.player.score = 5;
+        data.computer.score = 5;
+    } else if (dataComputer != term) { // If both computer and player know the answer, but it is not the same word
+        data.player.score = 10;
+        data.computer.score = 10;
+    }
+
+    return data;
+}
