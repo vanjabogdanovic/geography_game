@@ -23,6 +23,9 @@ if(!localStorage.username) {
 // Hello message in navbar
 ui.hello(helloSpan);
 
+// Clear localStorage values from game;
+geo.clearLocalStorage();
+
 // Show most active user
 geo.orderByUser( users => {
     ui.leaderboard(tr1, tr2, users);

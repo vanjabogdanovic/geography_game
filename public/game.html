@@ -2,15 +2,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!--  Font awesome  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--  Font-family: 'Balsamiq Sans'  -->
     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
+
     <title>Zanimljiva geografija</title>
 </head>
 <body>
@@ -41,7 +41,7 @@
                         Igraj
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="game.html">Protiv kompjutera</a>
+                        <a class="dropdown-item" href="#">Protiv kompjutera</a>
                         <a class="dropdown-item" href="#">Protiv drugog igrača</a>
                     </div>
                 </li>
@@ -61,89 +61,101 @@
     </nav>
     <div class="main">
     </div>
-    <div class="container position-relative">
-        <div class="card-deck">
-            <div class="card bg-white">
-                <div class="card-body">
-                    <h5 class="text-center">Započni igru</h5>
-                    <div class="img-wrapper">
-                        <img class="img-responsive" src="images/play.png" alt="Card image cap">
-                        <div class="img-overlay">
-                            <button class="b-0" id="play-btn"><i class="fa fa-play fa-3x"></i></button>
-                        </div>
-                    </div>
-                    <p class="text-center pt-3">ili</p>
-                    <form id="formNewUsername">
-                        <div class="form-group">
-                            <label for="newUsername">Promeni username:</label>
-                            <input type="text" class="form-control" id="newUsername" placeholder='Username..'>
-                        </div>
-                        <button type="submit" class="btn btn-block">Promeni</button>
-                    </form>
-                    <div id="divUpdatedUsername" class="text-center">
-                        <!--  Error message  -->
-                    </div>
-                </div>
-            </div>
-            <div class="card bg-white">
-                <div class="card-body">
-                    <h5 class="text-center">Dodaj nov pojam</h5>
-                    <img class="card-img-top" src="images/book.png" alt="Card image cap">
-                    <form class="pt-3" id="formAdd">
-                        <div class="form-group">
-                            <label for="categories">Izaberi kategoriju:</label>
-                            <select class="form-control" id="categories">
-                                <option selected="true" disabled>Kategorije..</option>
-                                <option value="Država">Država</option>
-                                <option value="Grad">Grad</option>
-                                <option value="Reka">Reka</option>
-                                <option value="Planina">Planina</option>
-                                <option value="Životinja">Životinja</option>
-                                <option value="Biljka">Biljka</option>
-                                <option value="Predmet">Predmet</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="newTerm">Napiši nov pojam:</label>
-                            <input type="text" class="form-control" id="newTerm" placeholder='Pojam..'>
-                        </div>
-                        <button type="submit" class="btn btn-block">Dodaj</button>
-                    </form>
-                    <div id="divNewTerm" class="text-center">
-                        <!--  Error message  -->
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container position-relative" id="container">
+        <!--    Game content    -->
     </div>
 </div>
-<!-- Modal -->
-<div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<!-- Modal: modalCart -->
+<div class="modal" id="modal-result"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-body">
-                <button id="close-modal" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i class="fa fa-close"></i>
+            <!--Header-->
+            <div class="modal-header">
+                <h4 class="modal-title">Rezultat:</h4>
+                <button id="close-result" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
                 </button>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-6 text-center" id="div-computer">
-                            <h3>Protiv kompjutera</h3>
-                            <img src="images/computer.png" alt="computer">
-                        </div>
-                        <div class="col-md-6 text-center" id="div-player">
-                            <h3>Protiv drugog igračа</h3>
-                            <img src="images/player.png" alt="player">
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="modal-footer text-center">
-                <button type="button" class="btn btn-primary w-50" id="btn-modal">Igraj!</button>
+            <!--Body-->
+            <div class="modal-body">
+
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Kategorija</th>
+                        <th id="player-username">Username</th>
+                        <th>Poeni</th>
+                        <th>Kompjuter</th>
+                        <th>Poeni</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">Država</th>
+                        <td id="player-drzava">Odgovor1</td>
+                        <td id="player-drzava-poeni">Poeni</td>
+                        <td id="computer-drzava">Odgovor1</td>
+                        <td id="computer-drzava-poeni">Poeni</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Grad</th>
+                        <td id="player-grad">Odgovor1</td>
+                        <td id="player-grad-poeni">Poeni</td>
+                        <td id="computer-grad">Odgovor1</td>
+                        <td id="computer-grad-poeni">Poeni</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Reka</th>
+                        <td id="player-reka">Odgovor1</td>
+                        <td id="player-reka-poeni">Poeni</td>
+                        <td id="computer-reka">Odgovor1</td>
+                        <td id="computer-reka-poeni">Poeni</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Planina</th>
+                        <td id="player-planina">Odgovor1</td>
+                        <td id="player-planina-poeni">Poeni</td>
+                        <td id="computer-planina">Odgovor1</td>
+                        <td id="computer-planina-poeni">Poeni</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Životinja</th>
+                        <td id="player-zivotinja">Odgovor1</td>
+                        <td id="player-zivotinja-poeni">Poeni</td>
+                        <td id="computer-zivotinja">Odgovor1</td>
+                        <td id="computer-zivotinja-poeni">Poeni</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Biljka</th>
+                        <td id="player-biljka">Odgovor1</td>
+                        <td id="player-biljka-poeni">Poeni</td>
+                        <td id="computer-biljka">Odgovor1</td>
+                        <td id="computer-biljka-poeni">Poeni</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Predmet</th>
+                        <td id="player-predmet">Odgovor1</td>
+                        <td id="player-predmet-poeni">Poeni</td>
+                        <td id="computer-predmet">Odgovor1</td>
+                        <td id="computer-predmet-poeni">Poeni</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Rezultat:</th>
+                        <th colspan="2" id="result-player"></th>
+                        <th colspan="2" id="result-computer"></th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <button id="new-game-btn" class="btn btn-primary">Nova igra</button>
             </div>
         </div>
     </div>
 </div>
+<!-- Modal: modalCart -->
 <!--  Firebase  -->
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
@@ -179,7 +191,7 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
 <!-- JS -->
-<script src="js/app.js" type="module"></script>
+<script src="js/game.js" type="module"></script>
 <script src="js/enterTerms.js" type="module"></script>
 </body>
 </html>

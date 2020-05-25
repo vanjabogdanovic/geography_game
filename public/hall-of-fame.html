@@ -19,8 +19,8 @@
     <nav class="navbar navbar-dark navbar-expand-lg sticky-top position-absolute w-100">
         <!--  Navbar brand  -->
         <span class="navbar-brand p-0 pl-3" href="#">
-        Zanimljiva ge<img src="images/earth.png" width="45" height="45" class="d-inline-block">grafija
-    </span>
+            Zanimljiva ge<img src="images/earth.png" width="45" height="45" class="d-inline-block">grafija
+        </span>
         <!--  Navbar toggler  -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,11 +35,15 @@
                         Početna
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link pl-3 pr-3" href="#">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-play"></i>
                         Igraj
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="game.html">Protiv kompjutera</a>
+                        <a class="dropdown-item" href="#">Protiv drugog igrača</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link pl-3 pr-3" href="hall-of-fame.html">
@@ -88,13 +92,14 @@
 <script>
     // Your web app's Firebase configuration
     var firebaseConfig = {
-        apiKey: "AIzaSyDUwUttIOodAujqmN9AEy5zn7Cx3955J68",
-        authDomain: "z-geografija.firebaseapp.com",
-        databaseURL: "https://z-geografija.firebaseio.com",
-        projectId: "z-geografija",
-        storageBucket: "z-geografija.appspot.com",
-        messagingSenderId: "186343331160",
-        appId: "1:186343331160:web:d6a62a601a2d09513e812d"
+        apiKey: "AIzaSyCiYRBfXZSEImfV9uqwhqK_8oDP18WTMts",
+        authDomain: "zgeografija-6db02.firebaseapp.com",
+        databaseURL: "https://zgeografija-6db02.firebaseio.com",
+        projectId: "zgeografija-6db02",
+        storageBucket: "zgeografija-6db02.appspot.com",
+        messagingSenderId: "378635864704",
+        appId: "1:378635864704:web:a5df44ec282359260e3465",
+        measurementId: "G-SW0L7YNFXL"
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);

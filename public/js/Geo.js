@@ -60,11 +60,11 @@ export class Geo {
         let x = true;
         let pojam = this.stringCheck(p);
         this.geo
-            .where('kategorija', '==', kategorija)
+            .where('kategorija', '==', kategorija) //dodaj jos jedan where
             .where('pojam', '==', pojam)
             .get()
             .then(snapshot => {
-                snapshot.docs.forEach(doc => {
+                snapshot.docs.forEach(doc => {  //izbaci forEach
                     if (doc.data()) {
                         x = false;
                     }
@@ -79,7 +79,6 @@ export class Geo {
     // User who contributed the most
     orderByUser(callback) {
         this.geo
-            .orderBy('korisnik')
             .get()
             .then(snapshot => {
                 snapshot.docs.forEach(doc => {
@@ -114,6 +113,7 @@ export class Geo {
         return counted;
     }
 
+    // sort users
     sortUsers(users) {
         let sorted = [];
         for( let user in users) {
@@ -125,11 +125,58 @@ export class Geo {
         return sorted;
     }
 
+    // limit up to five users
     limitTopFive(users) {
         let array = [];
         for(let i = 0; i < 5; i++) {
             array.push(users[i]);
         }
         return array;
+    }
+
+    // Terms that start with certain letter
+    specificLetterTerms(letter, category, term, callback) {
+        let flag = false;
+        this.geo
+            .where('pocetnoSlovo', '==', letter)
+            .where('kategorija', '==', category)
+            .where('pojam', '==', term)
+            .get()
+            .then(snapshot => {
+                snapshot.docs.forEach(doc => {
+                    if (doc.data()) {
+                        flag = true;
+                    }
+                });
+                callback(flag);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+    // Random term - when user plays game against computer
+    randomTerm(letter, category, callback) {
+        let term = false;
+        this.geo
+            .where('pocetnoSlovo', '==', letter)
+            .where('kategorija', '==', category)
+            .get()
+            .then(snapshot => {
+                let chance = Math.random();
+                if (chance > 0.2) {
+                    const randomIndex = Math.floor(Math.random() * length);
+                    term = snapshot.docs[randomIndex].data().pojam;
+                }
+                callback(term);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+    clearLocalStorage() {
+         let username = localStorage.username;
+         localStorage.clear();
+         localStorage.setItem('username', username);
     }
 }
