@@ -14,12 +14,12 @@
     <title>Zanimljiva geografija</title>
 </head>
 <body>
-<div id="hide" class="d-none">
+<div id="hide" class="d-none supreme-container">
     <!--  Navbar  -->
     <nav id="nav" class="navbar navbar-dark navbar-expand-lg sticky-top position-absolute w-100">
         <!--  Navbar brand  -->
         <span class="navbar-brand p-0 pl-3" href="#">
-        Zanimljiva ge<img src="images/earth.png" width="45" height="45" class="d-inline-block">grafija
+        Zanimljiva ge<img class="mr-1" src="images/earth.png" width="30" height="30" class="d-inline-block">grafija
     </span>
         <!--  Navbar toggler  -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle pl-3" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-play"></i>
                         Igraj
                     </a>
@@ -65,11 +65,12 @@
         <!--    Game content    -->
     </div>
 </div>
+<div id="modal-div" data-toggle="modal" data-target="#modal-result"></div>
 <!-- Modal: modalCart -->
-<div class="modal" id="modal-result"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" data-backdrop="true" id="modal-result"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
+    <div class="modal-dialog modal-lg game-dialog" role="document">
+        <div class="modal-content game-content">
             <!--Header-->
             <div class="modal-header">
                 <h4 class="modal-title">Rezultat:</h4>
@@ -82,7 +83,7 @@
 
                 <table class="table table-hover">
                     <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th>Kategorija</th>
                         <th id="player-username">Username</th>
                         <th>Poeni</th>
@@ -142,8 +143,10 @@
                     </tr>
                     <tr>
                         <th scope="row">Rezultat:</th>
-                        <th colspan="2" id="result-player"></th>
-                        <th colspan="2" id="result-computer"></th>
+                        <th></th>
+                        <th class="text-center h3" id="result-player"></th>
+                        <th></th>
+                        <th class="text-center h3" id="result-computer"></th>
                     </tr>
                     </tbody>
                 </table>

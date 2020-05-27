@@ -19,7 +19,7 @@
     <nav id="nav" class="navbar navbar-dark navbar-expand-lg sticky-top position-absolute w-100">
         <!--  Navbar brand  -->
         <span class="navbar-brand p-0 pl-3" href="#">
-        Zanimljiva ge<img src="images/earth.png" width="45" height="45" class="d-inline-block">grafija
+        Zanimljiva ge<img class='mr-1' src="images/earth.png" width="30" height="30" class="d-inline-block">grafija
     </span>
         <!--  Navbar toggler  -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle pl-3" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-play"></i>
                         Igraj
                     </a>
@@ -69,15 +69,15 @@
                     <div class="img-wrapper">
                         <img class="img-responsive" src="images/play.png" alt="Card image cap">
                         <div class="img-overlay">
-                            <button class="b-0" id="play-btn"><i class="fa fa-play fa-3x"></i></button>
+                            <button data-toggle="modal" data-target="#modal" class="b-0" id="play-btn"><i class="fa fa-play fa-3x"></i></button>
                         </div>
                     </div>
                     <p class="text-center pt-3">ili</p>
                     <form id="formNewUsername">
-                        <div class="form-group">
-                            <label for="newUsername">Promeni username:</label>
-                            <input type="text" class="form-control" id="newUsername" placeholder='Username..'>
-                        </div>
+                        <fieldset class="form-group">
+                            <label class="form-label ml-2 pl-1 pr-1" for="newUsername">Promeni username</label>
+                            <input type="text" class="form-control" id="newUsername">
+                        </fieldset>
                         <button type="submit" class="btn btn-block">Promeni</button>
                     </form>
                     <div id="divUpdatedUsername" class="text-center">
@@ -90,10 +90,9 @@
                     <h5 class="text-center">Dodaj nov pojam</h5>
                     <img class="card-img-top" src="images/book.png" alt="Card image cap">
                     <form class="pt-3" id="formAdd">
-                        <div class="form-group">
-                            <label for="categories">Izaberi kategoriju:</label>
+                        <fieldset class="form-group">
                             <select class="form-control" id="categories">
-                                <option selected="true" disabled>Kategorije..</option>
+                                <option selected="true" value="" disabled>Izaberi kategoriju</option>
                                 <option value="Država">Država</option>
                                 <option value="Grad">Grad</option>
                                 <option value="Reka">Reka</option>
@@ -102,11 +101,11 @@
                                 <option value="Biljka">Biljka</option>
                                 <option value="Predmet">Predmet</option>
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="newTerm">Napiši nov pojam:</label>
-                            <input type="text" class="form-control" id="newTerm" placeholder='Pojam..'>
-                        </div>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label class="form-label ml-2 pl-1 pr-1" for="newTerm">Napiši nov pojam</label>
+                            <input type="text" class="form-control" id="newTerm">
+                        </fieldset>
                         <button type="submit" class="btn btn-block">Dodaj</button>
                     </form>
                     <div id="divNewTerm" class="text-center">
@@ -118,7 +117,7 @@
     </div>
 </div>
 <!-- Modal -->
-<div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body">
@@ -144,6 +143,7 @@
         </div>
     </div>
 </div>
+
 <!--  Firebase  -->
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>

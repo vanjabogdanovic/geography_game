@@ -9,8 +9,7 @@ let geo = new Geo(localStorage.username);
 let hideDiv = document.getElementById('hide');
 let body = document.querySelector('body');
 let helloSpan = document.getElementById('hello');
-let tr1 = document.getElementById('tr-1');
-let tr2 = document.getElementById('tr-2');
+let d1 = document.getElementById('d1');
 
 // Enter username
 if(!localStorage.username) {
@@ -24,6 +23,6 @@ if(!localStorage.username) {
 ui.hello(helloSpan);
 
 // Show most active user
-geo.orderByUser( users => {
-    ui.leaderboard(tr1, tr2, users);
+geo.mostActiveUser( users => {
+    ui.leaderboard(d1, users);
 });

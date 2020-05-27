@@ -1,3 +1,6 @@
+import {String} from "./String.js";
+let str = new String();
+
 export class Geo {
 
     constructor(korisnik) {
@@ -12,72 +15,25 @@ export class Geo {
         localStorage.setItem('username', newUsername);
     }
 
-    // Get first letter
-    firstLetter(string) {
-        let str;
-        if(string.slice(0, 2) == 'Nj' ||
-            string.slice(0, 2) == 'Dž' ||
-            string.slice(0, 2) == 'Lj') {
-            str = string.slice(0, 2);
-        } else {
-            str = string.slice(0, 1);
-        }
-        return str;
-    }
-
-    // Check input value
-    stringCheck(str) {
-        let newStr = str
-        //delete spaces and tabs
-            .replace(/\s+/g, '')
-            //delete all special characters and numbers
-            .replace(/[^a-zđščžć]+/gi, '')
-            //only first letter uppercase
-            .replace(/(\B)[^ ]*/g, match => (match.toLowerCase()))
-            .replace(/^[^ ]/g, match => (match.toUpperCase()));
-        return newStr;
-    }
-
     // Add new term to firebase
-    async newTerm(kategorija, p) {
-        let pojam = this.stringCheck(p);
-        let vreme = new Date();
+    async newTerm(category, t) {
+        let term = str.stringCheck(t);
+        let time = new Date();
         //creating new document that will be added to firebase
         let newDoc = {
-            pocetnoSlovo: this.firstLetter(pojam),
+            pocetnoSlovo: str.firstLetter(term),
             korisnik: this.korisnik,
-            kategorija: kategorija,
-            pojam: pojam,
-            vreme: firebase.firestore.Timestamp.fromDate(vreme)
+            kategorija: category,
+            pojam: term,
+            vreme: firebase.firestore.Timestamp.fromDate(time)
         };
         //adding new document to this.chats(it contains whole collection from firebase)
         let response = await this.geo.add(newDoc);
         return response;
     }
 
-    // Check if term already exists
-    checkIfExists(kategorija, p, callback) {
-        let x = true;
-        let pojam = this.stringCheck(p);
-        this.geo
-            .where('kategorija', '==', kategorija) //dodaj jos jedan where
-            .where('pojam', '==', pojam)
-            .get()
-            .then(snapshot => {
-                snapshot.docs.forEach(doc => {  //izbaci forEach
-                    if (doc.data()) {
-                        x = false;
-                    }
-                });
-                callback(x);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }
-
     // User who contributed the most
-    orderByUser(callback) {
+    mostActiveUser(callback) {
         this.geo
             .get()
             .then(snapshot => {
@@ -90,6 +46,7 @@ export class Geo {
                 console.log(error);
             });
     }
+
     // count number of terms per user
     count(users) {
         let counted = {};
@@ -135,7 +92,7 @@ export class Geo {
     }
 
     // Terms that start with certain letter
-    specificLetterTerms(letter, category, term, callback) {
+    checkIfExists(letter, category, term, callback) {
         let flag = false;
         this.geo
             .where('pocetnoSlovo', '==', letter)
@@ -143,11 +100,9 @@ export class Geo {
             .where('pojam', '==', term)
             .get()
             .then(snapshot => {
-                snapshot.docs.forEach(doc => {
-                    if (doc.data()) {
-                        flag = true;
-                    }
-                });
+                if (snapshot.docs.length) {
+                    flag = true;
+                }
                 callback(flag);
             })
             .catch(error => {
@@ -159,7 +114,7 @@ export class Geo {
     randomTerm(letter, category, callback) {
         let term = false;
         this.geo
-            .where('pocetnoSlovo', '==', 'A')
+            .where('pocetnoSlovo', '==', letter)
             .where('kategorija', '==', category)
             .get()
             .then(snapshot => {
@@ -167,7 +122,7 @@ export class Geo {
                 if (chance > 0.2) {
                     const randomIndex = Math.floor(Math.random() * snapshot.docs.length);
                     let data = snapshot.docs[randomIndex];
-                    term = data && data !== undefined ? data.data().pojam : '/';
+                    term = data && data !== undefined ? data.data().pojam : '';
                 }
                 callback(term);
             })

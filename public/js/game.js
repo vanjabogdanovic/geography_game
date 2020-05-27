@@ -1,11 +1,15 @@
 // Import GeoUI class
 import {GeoUI} from "./GeoUI.js";
-
 let ui = new GeoUI();
 //Import Geo class
 import {Geo} from "./Geo.js";
-
 let geo = new Geo(localStorage.username);
+// Import Calculate class
+import {Calculate} from "./Calculate.js";
+let calc = new Calculate();
+// Import String Class
+import {String} from "./String.js";
+let str = new String();
 
 // Get DOM elements
 let hideDiv = document.getElementById('hide');
@@ -22,6 +26,7 @@ let modalPlayerAnswers = document.getElementsByClassName('player-answer');
 let modalComputerAnswers = document.getElementsByClassName('computer-answer');
 let modalPlayerScores = document.getElementsByClassName('player-score');
 let modalComputerScores = document.getElementsByClassName('computer-score');
+let modalTrigger = document.getElementById('modal-div');
 
 // Enter username
 if (!localStorage.username) {
@@ -40,46 +45,23 @@ playImg.addEventListener('click', () => {
     playImg.classList.add('d-none');
 
     // Choose random letter
-    let characters = ['A', 'B', 'V', 'G', 'D', 'Đ', 'E', 'Ž', 'Z', 'I', 'J', 'K', 'L', 'Lj', 'M', 'N', 'Nj', 'O', 'P', 'R', 'S', 'T', 'Ć', 'U', 'F', 'H', 'C', 'Č', 'Dž', 'Š'];
-    let charactersLength = characters.length;
-    let randomLetter = characters[Math.floor(Math.random() * charactersLength)];
+    let randomLetter = calc.randomLetter();
 
     // Card for printing countdown and letter
-    let cardDeck = ui.cardDeck(container);
-    cardDeck.classList.add('mb-2');
-    let card1 = ui.card(cardDeck);
-    let card2 = ui.card(cardDeck);
-    let cardBody1 = ui.cardBody(card1);
-    cardBody1.classList.add('text-center');
-    let cardBody2 = ui.cardBody(card2);
-    cardBody2.classList.add('text-center');
-    let letter = document.createElement('h3');
-    cardBody1.append(letter);
-    letter.textContent = 'Odabrano slovo: ' + randomLetter;
-    let countdown = document.createElement('h3');
-    countdown.style.color = 'darkred';
-    cardBody2.append(countdown);
+    let countdown = ui.countdownAndLetter(container, randomLetter);
 
     // Card for game inputs
-    let cardDeckGame = ui.cardDeck(container);
-    let cardGame = ui.card(cardDeckGame);
-    let cardBodyGame = ui.cardBody(cardGame);
-    let submitAnswersForm = ui.gameInputs(cardBodyGame);
+    let submitAnswersForm = ui.gameCard(container);
     let submitAnswersBtn = submitAnswersForm.lastElementChild;
 
     // Countdown
-    // Set the date we're counting down to
     let countdownText;
-    let countDownDate = new Date().getTime() + 91000;
+    let countDownDate = new Date().getTime() + 91000; // Set the date we're counting down to
     let x = setInterval(function () {
         let now = new Date().getTime();  // Get today's date and time
         let distance = countDownDate - now; // Find the distance between now and the count down date
-        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); // Time calculations for minutes and seconds
-        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        countdownText = 'Preostalo vreme: ' + minutes + "min " + seconds + "s ";
-        countdown.textContent = countdownText;
-        // If the count down is over, write some text
-        if (distance < 0) {
+        calc.countdownGame(countdown, distance);
+        if (distance < 0) { // If the count down is over, write some text
             submitAnswersBtn.click();
         }
     }, 1000);
@@ -127,12 +109,16 @@ playImg.addEventListener('click', () => {
         let allInfo = [];
         // Loop through all answers and categories
         for (let i = 0; i < playerAnswers.length; i++) {
-            let term = geo.stringCheck(playerAnswers[i].term);
+            let term = str.stringCheck(playerAnswers[i].term);
             let category = playerAnswers[i].category;
-            geo.specificLetterTerms(randomLetter, category, term, dataPlayer => { // players answers
+
+            geo.checkIfExists(randomLetter, category, term, dataPlayer => { // players answers
                 geo.randomTerm(randomLetter, category, dataComputer => { // generate random computer answers
-                    // Add all info to array
-                    allInfo.push(calculateScore(category, term, dataPlayer, dataComputer));
+
+                    // Add all info (about user's and computer's answers and scores)  to array
+                    allInfo.push(calc.calculateScore(category, term, dataPlayer, dataComputer));
+
+                    // If loop has reached last element, then show modal with result
                     if(i == playerAnswers.length - 1) {
                         printResult(allInfo);
                     }
@@ -141,12 +127,15 @@ playImg.addEventListener('click', () => {
         }
     });
 });
+// Show modal with result
 let printResult = (allInfo) => {
 
     // Add answers and scores to modal table
     ui.modalResult(allInfo, modalPlayerAnswers, modalComputerAnswers, modalPlayerScores, modalComputerScores, playerUsernameTd, resultPlayer, resultComputer, modalResult);
+    // When this div is triggered, modal will open (data-target='#modalResult');
+    modalTrigger.click();
 
-    // Clear localStorage when clicked on newGameButton from table modal
+    // newGameButton from table modal to start new game
     newGameBtn.addEventListener('click', () => {
         location.reload(); // reload page to start new game
     });
@@ -164,36 +153,3 @@ let printResult = (allInfo) => {
         window.location = 'index.html'; // return to index page
     });
 };
-
-function calculateScore(category, term, dataPlayer, dataComputer) {
-    let data = {
-        player:{
-            'answer': term ? term : '/',
-            'category': category,
-            'score': 0,
-        },
-        computer:{
-            'answer': dataComputer ? dataComputer : '/',
-            'category': category,
-            'score': 0,
-        },
-    };
-    if(!dataComputer && !dataPlayer) {
-        data.player.score = 0;
-        data.computer.score = 0;
-    } else if (!dataComputer) { // If only computer don't know the answer
-        data.player.score = 15;
-        data.computer.score = 0;
-    } else if (!dataPlayer) { // If player don't know the answer
-        data.player.score = 0;
-        data.computer.score = 15;
-    } else if (dataComputer == term) { // If both computer and player have the same answer
-        data.player.score = 5;
-        data.computer.score = 5;
-    } else if (dataComputer != term) { // If both computer and player know the answer, but it is not the same word
-        data.player.score = 10;
-        data.computer.score = 10;
-    }
-
-    return data;
-}
