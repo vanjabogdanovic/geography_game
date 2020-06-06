@@ -46,6 +46,9 @@ export class Calculate {
     countdownGame(countdown, distance) {
         let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); // Time calculations for minutes and seconds
         let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        if(distance < 10000) {
+            countdown.style.color = 'darkred';
+        }
         return countdown.textContent = 'Preostalo vreme: ' + minutes + "min " + seconds + "s ";
     }
 }

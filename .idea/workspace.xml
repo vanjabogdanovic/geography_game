@@ -2,18 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aaa44792-b379-47be-9ae4-fb1da2efaab1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/js/Calculate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/String.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/Sweetalert.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/game.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/hall-of-fame.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/hall-of-fame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/earth.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/earth.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/Calculate.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/Calculate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/Geo.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/Geo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/GeoUI.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/GeoUI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/Sweetalert.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/Sweetalert.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/enterTerms.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/hallOfFame.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/hallOfFame.js" afterDir="false" />
     </list>
@@ -29,28 +29,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/game.html">
+        <entry file="file://$PROJECT_DIR$/public/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="34" column="31" lean-forward="true" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/hall-of-fame.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="73" column="41" selection-start-line="73" selection-start-column="41" selection-end-line="73" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="57" column="31" lean-forward="true" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
+            <state relative-caret-position="-119">
+              <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -58,51 +40,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/hallOfFame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="461">
+              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/js/game.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/hall-of-fame.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
+            <state relative-caret-position="359">
+              <caret line="130" column="13" selection-start-line="130" selection-start-column="13" selection-end-line="130" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="124" selection-start-line="124" selection-end-line="134" selection-end-column="13" />
               <folding>
-                <element signature="e#3816#4802#0" />
+                <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#script#2;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#script#4;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#script#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#script#6;n#body#0;n#html#0;n#!!top" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/Geo.js">
+        <entry file="file://$PROJECT_DIR$/public/live-game.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="94" column="17" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="17" />
+            <state relative-caret-position="331">
+              <caret line="82" column="13" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
               <folding>
-                <element signature="n#!!block;n#constructor#0;n#Geo#0" />
-                <element signature="n#!!block;n#updateUsername#0;n#Geo#0" />
-                <element signature="n#!!block;n#newTerm#0;n#Geo#0" />
-                <element signature="n#!!block;n#orderByUser#0;n#Geo#0" />
-                <element signature="n#!!block;n#count#0;n#Geo#0" />
-                <element signature="n#!!block;n#sortUsers#0;n#Geo#0" />
-                <element signature="n#!!block;n#limitTopFive#0;n#Geo#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/String.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
-              <folding>
-                <element signature="n#!!block;n#firstLetter#0;n#String#0" />
-                <element signature="n#!!block;n#stringCheck#0;n#String#0" />
-                <element signature="n#!!block;n#empty#0;n#String#0" />
+                <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -111,37 +86,46 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/GeoUI.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+            <state relative-caret-position="19">
+              <caret line="124" column="53" selection-start-line="124" selection-start-column="53" selection-end-line="124" selection-end-column="53" />
               <folding>
                 <element signature="n#!!block;n#hello#0;n#GeoUI#0" />
                 <element signature="n#!!block;n#floatLabel#0;n#GeoUI#0" />
-                <element signature="e#9796#9863#0" />
                 <element signature="n#!!block;n#cardDeck#0;n#GeoUI#0" />
                 <element signature="n#!!block;n#card#0;n#GeoUI#0" />
                 <element signature="n#!!block;n#cardBody#0;n#GeoUI#0" />
-                <element signature="n#!!block;n#warning#0;n#GeoUI#0" />
+                <element signature="n#!!block;n#warningText#0;n#GeoUI#0" />
                 <element signature="n#!!block;n#leaderboard#0;n#GeoUI#0" />
                 <element signature="n#!!block;n#playButtonImage#0;n#GeoUI#0" />
-                <element signature="n#!!block;n#countdownAndLetter#0;n#GeoUI#0" />
+                <element signature="n#!!block;n#letterCard#0;n#GeoUI#0" />
+                <element signature="n#!!block;n#countdownCard#0;n#GeoUI#0" />
                 <element signature="n#!!block;n#gameCard#0;n#GeoUI#0" />
                 <element signature="n#!!block;n#gameInputs#0;n#GeoUI#0" />
                 <element signature="n#!!block;n#modalResult#0;n#GeoUI#0" />
+                <element signature="n#!!block;n#disableSubmit#0;n#GeoUI#0" />
+                <element signature="n#!!block;n#enableSubmit#0;n#GeoUI#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/Calculate.js">
+        <entry file="file://$PROJECT_DIR$/public/game.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="50" column="1" lean-forward="true" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
+            <state relative-caret-position="124">
+              <caret line="71" column="10" selection-start-line="71" selection-start-column="10" selection-end-line="71" selection-end-column="10" />
               <folding>
-                <element signature="n#!!block;n#randomLetter#0;n#Calculate#0" />
-                <element signature="n#!!block;n#calculateScore#0;n#Calculate#0" />
-                <element signature="n#!!block;n#countdownGame#0;n#Calculate#0" />
+                <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="291">
+              <caret line="301" column="4" selection-start-line="301" selection-start-column="4" selection-end-line="301" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -169,9 +153,17 @@
       <find>inp</find>
       <find>modal</find>
       <find>winner</find>
-      <find>random</find>
       <find>stringC</find>
       <find>firstLe</find>
+      <find>random</find>
+      <find>modal-res</find>
+      <find>form</find>
+      <find>border</find>
+      <find>foc</find>
+      <find>modalRes</find>
+      <find>red</find>
+      <find>randomLetter</find>
+      <find>button</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -191,18 +183,30 @@
         <option value="$PROJECT_DIR$/public/Geo.js" />
         <option value="$PROJECT_DIR$/public/js/enterUsername.js" />
         <option value="$PROJECT_DIR$/public/js/enterTerms.js" />
-        <option value="$PROJECT_DIR$/public/css/style.css" />
-        <option value="$PROJECT_DIR$/public/game.html" />
-        <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/public/hall-of-fame.html" />
-        <option value="$PROJECT_DIR$/public/js/Sweetalert.js" />
+        <option value="$PROJECT_DIR$/public/js/String.js" />
+        <option value="$PROJECT_DIR$/live-game.html" />
+        <option value="$PROJECT_DIR$/public/js/allTerms.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/public/js/Play.js" />
+        <option value="$PROJECT_DIR$/public/js/live-game-2.js" />
+        <option value="$PROJECT_DIR$/public/aaaa.js" />
+        <option value="$PROJECT_DIR$/aaaa.js" />
+        <option value="$PROJECT_DIR$/public/js/Geo.js" />
         <option value="$PROJECT_DIR$/public/js/Calculate.js" />
+        <option value="$PROJECT_DIR$/LiveGame.js" />
+        <option value="$PROJECT_DIR$/public/js/game.js" />
+        <option value="$PROJECT_DIR$/public/js/app.js" />
+        <option value="$PROJECT_DIR$/public/js/Sweetalert.js" />
+        <option value="$PROJECT_DIR$/LiveGameServer.js" />
+        <option value="$PROJECT_DIR$/public/js/liveGame.js" />
+        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/public/js/hallOfFame.js" />
         <option value="$PROJECT_DIR$/public/js/GeoUI.js" />
-        <option value="$PROJECT_DIR$/public/js/Geo.js" />
-        <option value="$PROJECT_DIR$/public/js/String.js" />
-        <option value="$PROJECT_DIR$/public/js/app.js" />
-        <option value="$PROJECT_DIR$/public/js/game.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/public/hall-of-fame.html" />
+        <option value="$PROJECT_DIR$/public/live-game.html" />
+        <option value="$PROJECT_DIR$/public/game.html" />
+        <option value="$PROJECT_DIR$/public/css/style.css" />
       </list>
     </option>
   </component>
@@ -234,6 +238,12 @@
               <item name="z_geografija" type="b2602c69:ProjectViewProjectNode" />
               <item name="z_geografija" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="z_geografija" type="b2602c69:ProjectViewProjectNode" />
+              <item name="z_geografija" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -250,16 +260,18 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/images" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Desktop\JS\Online nastava\z_geografija\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Desktop\JS\Online nastava\z_geografija" />
+      <recent name="D:\Desktop\JS\Online nastava\z_geografija\public" />
       <recent name="D:\Desktop\JS\Online nastava\z_geografija\public\images" />
       <recent name="D:\Desktop\JS\Online nastava\z_geografija\public\css" />
       <recent name="D:\Desktop\JS\Online nastava\z_geografija\public\js" />
-      <recent name="D:\Desktop\JS\Online nastava\z_geografija\public" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -299,18 +311,23 @@
       <workItem from="1590396453541" duration="11073000" />
       <workItem from="1590420693269" duration="14351000" />
       <workItem from="1590439884337" duration="4872000" />
-      <workItem from="1590492367908" duration="40212000" />
+      <workItem from="1590492367908" duration="41500000" />
+      <workItem from="1590652113452" duration="10347000" />
+      <workItem from="1590740350956" duration="55373000" />
+      <workItem from="1591044705165" duration="29396000" />
+      <workItem from="1591169511843" duration="34293000" />
+      <workItem from="1591437358781" duration="38622000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="243253000" />
+    <option name="totallyTimeSpent" value="412572000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4950166" weight="0.24032739" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4950166" visible="true" weight="0.23958333" />
       <window_info id="Structure" order="1" sideWeight="0.50498337" side_tool="true" weight="0.24207492" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -322,7 +339,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.31838074" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.31751227" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -343,68 +360,10 @@
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/enterUsername.js" />
-    <entry file="file://$PROJECT_DIR$/public/js/enterTerms.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="116" column="10" selection-start-line="116" selection-start-column="10" selection-end-line="116" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/hall-of-fame.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="73" column="41" selection-start-line="73" selection-start-column="41" selection-end-line="73" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/game.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="34" column="31" lean-forward="true" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2329">
-          <caret line="137" column="1" lean-forward="true" selection-start-line="137" selection-start-column="1" selection-end-line="137" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/Sweetalert.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
-          <folding>
-            <element signature="n#!!block;n#enterUsername#0;n#Sweetalert#0" />
-            <element signature="n#!!block;n#winnerOrLoser#0;n#Sweetalert#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/Calculate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="50" column="1" lean-forward="true" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
-          <folding>
-            <element signature="n#!!block;n#randomLetter#0;n#Calculate#0" />
-            <element signature="n#!!block;n#calculateScore#0;n#Calculate#0" />
-            <element signature="n#!!block;n#countdownGame#0;n#Calculate#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/String.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
+          <caret line="37" column="1" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
           <folding>
             <element signature="n#!!block;n#firstLetter#0;n#String#0" />
             <element signature="n#!!block;n#stringCheck#0;n#String#0" />
@@ -413,65 +372,184 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/hallOfFame.js">
+    <entry file="file://$PROJECT_DIR$/public/js/allTerms.js" />
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="272">
+          <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/GeoUI.js">
+    <entry file="file://$PROJECT_DIR$/public/aaaa.js" />
+    <entry file="file://$PROJECT_DIR$/public/js/Calculate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+        <state relative-caret-position="51">
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
           <folding>
-            <element signature="n#!!block;n#hello#0;n#GeoUI#0" />
-            <element signature="n#!!block;n#floatLabel#0;n#GeoUI#0" />
-            <element signature="e#9796#9863#0" />
-            <element signature="n#!!block;n#cardDeck#0;n#GeoUI#0" />
-            <element signature="n#!!block;n#card#0;n#GeoUI#0" />
-            <element signature="n#!!block;n#cardBody#0;n#GeoUI#0" />
-            <element signature="n#!!block;n#warning#0;n#GeoUI#0" />
-            <element signature="n#!!block;n#leaderboard#0;n#GeoUI#0" />
-            <element signature="n#!!block;n#playButtonImage#0;n#GeoUI#0" />
-            <element signature="n#!!block;n#countdownAndLetter#0;n#GeoUI#0" />
-            <element signature="n#!!block;n#gameCard#0;n#GeoUI#0" />
-            <element signature="n#!!block;n#gameInputs#0;n#GeoUI#0" />
-            <element signature="n#!!block;n#modalResult#0;n#GeoUI#0" />
+            <element signature="n#!!block;n#randomLetter#0;n#Calculate#0" />
+            <element signature="n#!!block;n#calculateScore#0;n#Calculate#0" />
+            <element signature="n#!!block;n#countdownGame#0;n#Calculate#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/enterTerms.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/Play.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="13" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="57" column="31" lean-forward="true" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/Sweetalert.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+          <folding>
+            <element signature="n#!!block;n#enterUsername#0;n#Sweetalert#0" />
+            <element signature="n#!!block;n#winnerOrLoser#0;n#Sweetalert#0" />
+            <element signature="n#!!block;n#gameRules#0;n#Sweetalert#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/Geo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="94" column="17" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="17" />
+        <state relative-caret-position="413">
+          <caret line="143" column="33" selection-start-line="143" selection-start-column="33" selection-end-line="143" selection-end-column="33" />
           <folding>
-            <element signature="n#!!block;n#constructor#0;n#Geo#0" />
             <element signature="n#!!block;n#updateUsername#0;n#Geo#0" />
             <element signature="n#!!block;n#newTerm#0;n#Geo#0" />
-            <element signature="n#!!block;n#orderByUser#0;n#Geo#0" />
+            <element signature="n#!!block;n#bestScore#0;n#Geo#0" />
+            <element signature="n#!!block;n#mostActiveUser#0;n#Geo#0" />
             <element signature="n#!!block;n#count#0;n#Geo#0" />
             <element signature="n#!!block;n#sortUsers#0;n#Geo#0" />
             <element signature="n#!!block;n#limitTopFive#0;n#Geo#0" />
+            <element signature="n#!!block;n#checkIfExists#0;n#Geo#0" />
+            <element signature="n#!!block;n#generateBotAnswer#0;n#Geo#0" />
+            <element signature="n#!!block;n#userScoreExists#0;n#Geo#0" />
+            <element signature="n#!!block;n#addGame#0;n#Geo#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/liveGame.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="42" column="47" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="32" column="13" lean-forward="true" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LiveGameServer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="4" column="18" lean-forward="true" selection-start-line="4" selection-end-line="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
+        <state relative-caret-position="-119">
+          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/GeoUI.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="124" column="53" selection-start-line="124" selection-start-column="53" selection-end-line="124" selection-end-column="53" />
           <folding>
-            <element signature="e#3816#4802#0" />
+            <element signature="n#!!block;n#hello#0;n#GeoUI#0" />
+            <element signature="n#!!block;n#floatLabel#0;n#GeoUI#0" />
+            <element signature="n#!!block;n#cardDeck#0;n#GeoUI#0" />
+            <element signature="n#!!block;n#card#0;n#GeoUI#0" />
+            <element signature="n#!!block;n#cardBody#0;n#GeoUI#0" />
+            <element signature="n#!!block;n#warningText#0;n#GeoUI#0" />
+            <element signature="n#!!block;n#leaderboard#0;n#GeoUI#0" />
+            <element signature="n#!!block;n#playButtonImage#0;n#GeoUI#0" />
+            <element signature="n#!!block;n#letterCard#0;n#GeoUI#0" />
+            <element signature="n#!!block;n#countdownCard#0;n#GeoUI#0" />
+            <element signature="n#!!block;n#gameCard#0;n#GeoUI#0" />
+            <element signature="n#!!block;n#gameInputs#0;n#GeoUI#0" />
+            <element signature="n#!!block;n#modalResult#0;n#GeoUI#0" />
+            <element signature="n#!!block;n#disableSubmit#0;n#GeoUI#0" />
+            <element signature="n#!!block;n#enableSubmit#0;n#GeoUI#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/hallOfFame.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="124" selection-start-line="124" selection-end-line="134" selection-end-column="13" />
+          <folding>
+            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#script#2;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#script#4;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#script#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#script#6;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/hall-of-fame.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="130" column="13" selection-start-line="130" selection-start-column="13" selection-end-line="130" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/live-game.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="82" column="13" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/game.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="71" column="10" selection-start-line="71" selection-start-column="10" selection-end-line="71" selection-end-column="10" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="301" column="4" selection-start-line="301" selection-start-column="4" selection-end-line="301" selection-end-column="4" />
         </state>
       </provider>
     </entry>

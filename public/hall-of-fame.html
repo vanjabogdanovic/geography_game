@@ -42,13 +42,19 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="game.html">Protiv kompjutera</a>
-                        <a class="dropdown-item" href="#">Protiv drugog igrača</a>
+                        <a class="dropdown-item" href="live-game.html">Protiv drugog igrača</a>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link pl-3 pr-3" href="hall-of-fame.html">
                         <i class="fa fa-trophy"></i>
                         Hall of Fame
+                    </a>
+                </li>
+                <li class="nav-item rules">
+                    <a class="nav-link pl-3 pr-3" href="#">
+                        <i class="fa fa-question"></i>
+                        Pravila
                     </a>
                 </li>
             </ul>
@@ -61,13 +67,43 @@
     </nav>
     <div class="main">
     </div>
-    <div class="container position-relative">
+    <div class="container position-relative mb-1">
         <div class="card-deck">
             <div class="card bg-white">
                 <div class="card-header text-center p-2">
-                    <h1><i class="fa fa-trophy text-warning"></i> Hall of Fame <i class="fa fa-trophy text-warning"></i>
-                    </h1>
-                    <p class="m-0">Korisnici sa najvećim brojem unetih pojmova</p>
+                    <h1><i class="fa fa-trophy text-warning"></i> Hall of Fame <i class="fa fa-trophy text-warning"></i></h1>
+                </div>
+                <div class="card-body">
+                    <button id="pointsBtn" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse1">
+                        Najveći broj POENA
+                    </button>
+                    <button id="termsBtn" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse2">
+                        Najviše unetih POJMOVA
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-deck mt-1 collapse" id="collapse1">
+            <div class="card bg-white">
+                <div class="card-header text-center p-2">
+                    <h3>Korisnici sa najvećim brojem poena</h3>
+                </div>
+                <div class="card-body">
+                    <div id="score1" class="row">
+                        <div class="col-1">
+
+                        </div>
+                    </div>
+                    <div id="score2" class="row">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-deck mt-1 collapse" id="collapse2">
+            <div class="card bg-white">
+                <div class="card-header text-center p-2">
+                    <h3>Korisnici sa najvećim brojem unetih pojmova</h3>
                 </div>
                 <div class="card-body">
                     <div id="d1" class="row">
@@ -82,6 +118,17 @@
             </div>
         </div>
     </div>
+    <!-- Footer -->
+    <footer class="page-footer">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center text-white pt-2">
+            <span class="float-right">
+                <a href="https://itbootcamp.rs/" target="_blank"> <img class="mb-2" src="images/itbootcamp.png" alt="ITBootcamp" id="bootcamp"> </a>
+                <a href="https://www.linkedin.com/in/vanjabogdanovic/" target="_blank"><i class="fa fa-linkedin fa-2x text-white mx-2 pl-3"></i></a>
+                <a href="https://github.com/vanjabogdanovic" target="_blank"><i class="fa fa-github fa-2x text-white mx-2"></i></a>
+            </span>
+        </div>
+    </footer>
 </div>
 <!--  Firebase  -->
 <!-- The core Firebase JS SDK is always required and must be listed first -->

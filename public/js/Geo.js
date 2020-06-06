@@ -6,7 +6,9 @@ export class Geo {
     constructor(korisnik) {
         this.korisnik = korisnik;
         this.geo = db.collection('pojmovi');
+        this.game = db.collection('rezultati');
         this.users = [];
+        this.score = [];
     }
 
     //change username
@@ -30,6 +32,23 @@ export class Geo {
         //adding new document to this.chats(it contains whole collection from firebase)
         let response = await this.geo.add(newDoc);
         return response;
+    }
+
+    // Users with best score
+    bestScore(callback) {
+        this.game
+            .orderBy('broj_poena', 'desc')
+            .limit(5)
+            .get()
+            .then(snapshot => {
+                snapshot.docs.forEach(doc => {
+                    this.score.push(doc.data());
+                });
+                callback(this.score);
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
 
     // User who contributed the most
@@ -129,5 +148,64 @@ export class Geo {
             .catch(error => {
                 console.log(error);
             });
+    }
+
+    generateBotAnswer(category, firstLetter) {
+        let promis = new Promise((resolve, reject) => {
+            let answer
+            let key = db.collection('pojmovi').doc().id;
+            db.collection('pojmovi')
+                .where('kategorija', '==', category)
+                .where('pocetnoSlovo', '==', firstLetter)
+                .where(firebase.firestore.FieldPath.documentId(), '>=', key)
+                .limit(1)
+                .get()
+                .then(snapshot => {
+                    const randomIndex = Math.floor(Math.random() * snapshot.docs.length);
+                    if (snapshot.docs[randomIndex] === undefined) {
+                        answer = '';
+                    } else {
+                        answer = finalAnswer(Math.random(), snapshot.docs[randomIndex].data().pojam);
+                    }
+                    resolve(answer);
+                })
+        });
+        return promis;
+    }
+
+    // Check if user's score exists
+    userScoreExists(callback) {
+        this.game
+            .where("username", "==", localStorage.username)
+            .get()
+            .then( snapshot => {
+                let doc;
+                if(snapshot.docs.length) {
+                    doc = snapshot.docs[0];
+                } else {
+                    doc = false;
+                }
+                callback(doc);
+            });
+    }
+    // Add users score and number of played games to database
+    addGame(score) {
+        this.userScoreExists( doc => {
+            let data = doc ? doc.data() : false;
+            let docId = doc ? doc.id : null;
+            let time = new Date();
+            let newDoc = {
+                username: localStorage.username,
+                broj_igara: data ? data.broj_igara + 1 : 1,
+                broj_poena: data ? data.broj_poena + score : score,
+                datum: firebase.firestore.Timestamp.fromDate(time)
+            };
+            //adding new document to this.chats(it contains whole collection from firebase)
+            if(doc) {
+                return this.game.doc(docId).update(newDoc);
+            } else {
+                return this.game.doc().set(newDoc);
+            }
+        });
     }
 }

@@ -14,6 +14,7 @@
     <title>Zanimljiva geografija</title>
 </head>
 <body>
+
 <div id="hide" class="d-none">
     <!--  Navbar  -->
     <nav id="nav" class="navbar navbar-dark navbar-expand-lg sticky-top position-absolute w-100">
@@ -42,13 +43,19 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="game.html">Protiv kompjutera</a>
-                        <a class="dropdown-item" href="#">Protiv drugog igrača</a>
+                        <a class="dropdown-item" href="live-game.html">Protiv drugog igrača</a>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link pl-3 pr-3" href="hall-of-fame.html">
                         <i class="fa fa-trophy"></i>
                         Hall of Fame
+                    </a>
+                </li>
+                <li class="nav-item rules">
+                    <a class="nav-link pl-3 pr-3" href="#">
+                        <i class="fa fa-question"></i>
+                        Pravila
                     </a>
                 </li>
             </ul>
@@ -73,7 +80,7 @@
                         </div>
                     </div>
                     <p class="text-center pt-3">ili</p>
-                    <form id="formNewUsername">
+                    <form id="formNewUsername" autocomplete="off">
                         <fieldset class="form-group">
                             <label class="form-label ml-2 pl-1 pr-1" for="newUsername">Promeni username</label>
                             <input type="text" class="form-control" id="newUsername">
@@ -89,7 +96,7 @@
                 <div class="card-body">
                     <h5 class="text-center">Dodaj nov pojam</h5>
                     <img class="card-img-top" src="images/book.png" alt="Card image cap">
-                    <form class="pt-3" id="formAdd">
+                    <form class="pt-3" id="formAdd" autocomplete="off">
                         <fieldset class="form-group">
                             <select class="form-control" id="categories">
                                 <option selected="true" value="" disabled>Izaberi kategoriju</option>
@@ -115,7 +122,19 @@
             </div>
         </div>
     </div>
+    <!-- Footer -->
+    <footer class="page-footer">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center text-white pt-2">
+            <span class="float-right">
+                <a href="https://itbootcamp.rs/" target="_blank"> <img class="mb-2" src="images/itbootcamp.png" alt="ITBootcamp" id="bootcamp"> </a>
+                <a href="https://www.linkedin.com/in/vanjabogdanovic/" target="_blank"><i class="fa fa-linkedin fa-2x text-white mx-2 pl-3"></i></a>
+                <a href="https://github.com/vanjabogdanovic" target="_blank"><i class="fa fa-github fa-2x text-white mx-2"></i></a>
+            </span>
+        </div>
+    </footer>
 </div>
+
 <!-- Modal -->
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -179,6 +198,5 @@
         crossorigin="anonymous"></script>
 <!-- JS -->
 <script src="js/app.js" type="module"></script>
-<script src="js/enterTerms.js" type="module"></script>
 </body>
 </html>

@@ -1,5 +1,9 @@
 import {Sweetalert} from "./Sweetalert.js";
 let sweetAlert = new Sweetalert();
+import {Geo} from "./Geo.js";
+let geo = new Geo();
+import {Calculate} from "./Calculate.js";
+let calc = new Calculate();
 
 export class GeoUI {
 
@@ -75,7 +79,11 @@ export class GeoUI {
                 img.src = 'images/medal.png';
             }
             col1.classList.add('col-2', 'text-break', 'text-center');
-            h.textContent = array[i][0] + ": " + array[i][1];
+            if(array[i][0]) {
+                h.textContent = array[i][0] + ": " + array[i][1];
+            } else {
+                h.textContent = array[i].username + ": " + array[i].broj_poena;
+            }
             img.style.width = '50%';
             d1.append(col1);
             col1.append(img, h);
@@ -91,23 +99,39 @@ export class GeoUI {
         return playImg;
     }
 
-    // Cards for countdown and random letter (game.js)
-    countdownAndLetter(container, randomLetter) {
-        let cardDeck = this.cardDeck(container);
-        cardDeck.classList.add('mb-2');
+    // Card for random letter (game.js)
+    letterCard(cardDeck) {
         let card1 = this.card(cardDeck);
-        let card2 = this.card(cardDeck);
         let cardBody1 = this.cardBody(card1);
+        let letter = document.createElement('h3');
+        cardDeck.classList.add('mb-2');
         cardBody1.classList.add('text-center');
+        cardBody1.append(letter);
+        return letter;
+    }
+
+    // Card for countdown (game.js)
+    countdownCard(cardDeck) {
+        let card2 = this.card(cardDeck);
         let cardBody2 = this.cardBody(card2);
         cardBody2.classList.add('text-center');
-        let letter = document.createElement('h3');
-        cardBody1.append(letter);
-        letter.textContent = 'Odabrano slovo: ' + randomLetter;
         let countdown = document.createElement('h3');
-        countdown.style.color = 'darkred';
         cardBody2.append(countdown);
         return countdown;
+    }
+
+    // Countdown (game.js)
+    countdown(countdown, submitAnswersBtn) {
+        let countDownDate = new Date().getTime() + 92000; // Set the date we're counting down to
+        let timerCountdown = setInterval(function () {
+            let now = new Date().getTime();  // Get today's date and time
+            let distance = countDownDate - now; // Find the distance between now and the count down date
+            calc.countdownGame(countdown, distance);
+            if (distance < 0) { // If the count down is over, write some text
+                submitAnswersBtn.click();
+            }
+        }, 1000);
+        return timerCountdown;
     }
 
     // Card for game inputs (game.html)
@@ -125,6 +149,7 @@ export class GeoUI {
         let form = document.createElement('form');
         form.classList.add('mb-0');
         form.id = 'form-submit-answers';
+        form.autocomplete = 'off';
         card.append(form);
         // DRZAVA
         let fieldsetDrzava = document.createElement('fieldset');
@@ -239,7 +264,15 @@ export class GeoUI {
     }
 
     // Show results after game (game.html)
-    modalResult(allInfo, modalPlayerAnswers, modalComputerAnswers, modalPlayerScore, modalComputerScore, playerUsernameTd, resultPlayer, resultComputer, modalResult) {
+    modalResult(allInfo, opponent = 'Kompjuter') {
+        let modalResult = document.getElementById('modal-result');
+        let modalPlayerAnswers = document.getElementsByClassName('player-answer');
+        let modalComputerAnswers = document.getElementsByClassName('computer-answer');
+        let scores = document.getElementsByClassName('score');
+        let result = document.getElementById('result');
+        let playerUsernameTd = document.getElementById('player-username');
+        let opponentUsernameTd = document.getElementById('opponent-username');
+
         let playerScore = 0;
         let computerScore = 0;
         let i = 0;
@@ -250,8 +283,7 @@ export class GeoUI {
 
             modalPlayerAnswers[i].innerText = infoPlayer.answer;
             modalComputerAnswers[i].innerText = infoComputer.answer;
-            modalPlayerScore[i].innerText = infoPlayer.score;
-            modalComputerScore[i].innerText = infoComputer.score;
+            scores[i].innerText = infoPlayer.score + " : " + infoComputer.score;
 
             // Calculate score and add it to modal table
             playerScore += infoPlayer.score;
@@ -262,9 +294,9 @@ export class GeoUI {
 
         // Sweetalert winner or loser
         if (playerScore > computerScore) {
-            sweetAlert.winnerOrLoser('images/winner.gif', 'Čestitamo!', 'Kompjuter je poražen!');
+            sweetAlert.winnerOrLoser('images/winner.gif', 'Čestitamo!', 'Pobedili ste!');
         } else if (computerScore > playerScore) {
-            sweetAlert.winnerOrLoser('images/loser.gif', 'Žao nam je...', 'Kompjuter je pobedio.');
+            sweetAlert.winnerOrLoser('images/loser.gif', 'Žao nam je...', 'Niste pobedili.');
         } else {
             sweetAlert.winnerOrLoser('images/tie.gif', 'Nerešeno!', 'Nema pobednika.');
         }
@@ -272,10 +304,32 @@ export class GeoUI {
         // Show score in modal
         let username = localStorage.username;
         playerUsernameTd.textContent = username;
-        resultPlayer.textContent = playerScore;
-        resultComputer.textContent = computerScore;
+        opponentUsernameTd.textContent = opponent;
+        result.textContent = playerScore + ' : ' + computerScore;
 
         // Show modal with results
         modalResult.classList.add('d-block');
+
+        // Add score to database
+        geo.addGame(playerScore);
+    }
+
+    // Disable game inputs and submit button
+    disableSubmit(submitAnswersBtn) {
+        let inputs = document.querySelectorAll('input');
+        inputs.forEach( input => {
+            input.disabled = true;
+            input.style.backgroundColor = 'white';
+        });
+        submitAnswersBtn.disabled = true;
+    }
+
+    // Enable game inputs and submit button
+    enableSubmit(submitAnswersBtn) {
+        let inputs = document.querySelectorAll('input');
+        inputs.forEach( input => {
+            input.disabled = false;
+        });
+        submitAnswersBtn.disabled = false;
     }
 }

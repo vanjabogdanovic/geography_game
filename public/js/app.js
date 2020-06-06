@@ -1,10 +1,7 @@
-// Import GeoUI class
 import {GeoUI} from "./GeoUI.js";
 let ui = new GeoUI();
-// Import Sweetalert class
 import {Sweetalert} from "./Sweetalert.js";
 let sweetAlert = new Sweetalert();
-// Import String class
 import {String} from "./String.js";
 let str = new String();
 
@@ -30,6 +27,9 @@ if(!localStorage.username) {
 
 // Hello message in navbar
 ui.hello(helloSpan);
+
+// Game rules alert
+sweetAlert.gameRules();
 
 // Input label float
 ui.floatLabel();
@@ -108,6 +108,9 @@ btnModal.addEventListener('click', () => {
     if(divComputer.classList.contains('selected-div')) {
         window.location = "game.html";
     }
+    if(divPlayer.classList.contains('selected-div')) {
+        window.location = "live-game.html";
+    }
 });
 
 // ENTER
@@ -117,10 +120,10 @@ btnModal.addEventListener('click', () => {
 //
 // wordArray.forEach(word => {
 //     console.log(word);
-//     geo.checkIfExists('Država', word, data => {
+//     geo.checkIfExists(str.firstLetter(word), 'Reka', word, data => {
 //         if (data) {
 //             console.log(true);
-//             geo.newTerm('Država', word);
+//             geo.newTerm('Reka', word);
 //         }
 //     })
 // });

@@ -82,7 +82,7 @@
         </div>
     </footer>
 </div>
-<div id="modal-div" data-toggle="modal" data-target="#modal-result"></div>
+<div id="modal-div-live" data-toggle="modal" data-target="#modal-result"></div>
 <!-- Modal: modalCart -->
 <div class="modal fade" data-backdrop="true" id="modal-result"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
@@ -102,9 +102,9 @@
                     <thead>
                     <tr class="text-center">
                         <th>Kategorija</th>
-                        <th id="player-username">Username</th>
+                        <th id="player-username"></th>
                         <th>Poeni</th>
-                        <th id="opponent-username">Kompjuter</th>
+                        <th id="opponent-username">Protivnik</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -201,6 +201,7 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
 <!-- JS -->
-<script src="js/game.js" type="module"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/liveGame.js" type="module"></script>
 </body>
 </html>
