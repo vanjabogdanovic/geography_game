@@ -48,6 +48,10 @@ export class Calculate {
         let seconds = Math.floor((distance % (1000 * 60)) / 1000);
         if(distance < 10000) {
             countdown.style.color = 'darkred';
+            if(distance < 5000) {
+            let beepSound = new Audio('./sounds/beep.mp3');
+            beepSound.play();
+            }
         }
         return countdown.textContent = 'Preostalo vreme: ' + minutes + "min " + seconds + "s ";
     }

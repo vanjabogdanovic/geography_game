@@ -295,10 +295,16 @@ export class GeoUI {
         // Sweetalert winner or loser
         if (playerScore > computerScore) {
             sweetAlert.winnerOrLoser('images/winner.gif', 'Čestitamo!', 'Pobedili ste!');
+            let winnerSound = new Audio('./sounds/winner.mp3');
+            winnerSound.play();
         } else if (computerScore > playerScore) {
             sweetAlert.winnerOrLoser('images/loser.gif', 'Žao nam je...', 'Niste pobedili.');
+            let loserSound = new Audio('./sounds/loser.mp3');
+            loserSound.play();
         } else {
             sweetAlert.winnerOrLoser('images/tie.gif', 'Nerešeno!', 'Nema pobednika.');
+            let loserSound = new Audio('./sounds/loser.mp3');
+            loserSound.play();
         }
 
         // Show score in modal
