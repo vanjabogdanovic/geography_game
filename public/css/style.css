@@ -17,8 +17,8 @@ footer {
 }
 
 #bootcamp {
-    width: 105px;
-    height: 25px;
+    width: 70px;
+    height: 15px;
 }
 
 /*Navbar*/
@@ -158,10 +158,10 @@ td img {
 
 #pointsBtn, #termsBtn {
     background: #284E97;
-    width: 25%;
+    width: 40%;
 }
 #pointsBtn {
-    margin-left: 25%;
+    margin-left: 10%;
 }
 
 /*Modal start game*/

@@ -150,27 +150,26 @@ export class Geo {
             });
     }
 
-    generateBotAnswer(category, firstLetter) {
-        let promis = new Promise((resolve, reject) => {
-            let answer
-            let key = db.collection('pojmovi').doc().id;
-            db.collection('pojmovi')
-                .where('kategorija', '==', category)
-                .where('pocetnoSlovo', '==', firstLetter)
-                .where(firebase.firestore.FieldPath.documentId(), '>=', key)
-                .limit(1)
-                .get()
-                .then(snapshot => {
+    // Random term - reads only one term
+    generateComputerAnswer(category, firstLetter, callback) {
+        let term = false;
+        let key = this.geo.doc().id;
+        this.geo
+            .where('kategorija', '==', category)
+            .where('pocetnoSlovo', '==', firstLetter)
+            .where(firebase.firestore.FieldPath.documentId(), '>=', key)
+            .limit(1)
+            .get()
+            .then(snapshot => {
+                let chance = Math.random();
+                if (chance > 0.2) {
+                    console.log(snapshot.docs.length);
                     const randomIndex = Math.floor(Math.random() * snapshot.docs.length);
-                    if (snapshot.docs[randomIndex] === undefined) {
-                        answer = '';
-                    } else {
-                        answer = finalAnswer(Math.random(), snapshot.docs[randomIndex].data().pojam);
-                    }
-                    resolve(answer);
-                })
-        });
-        return promis;
+                    term = snapshot.docs[randomIndex].data().pojam;
+                    term = term && term !== undefined ? term : '';
+                }
+                callback(term);
+            })
     }
 
     // Check if user's score exists

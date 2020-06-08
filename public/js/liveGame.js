@@ -171,7 +171,7 @@ socket.on('message', message => {
                 let category = playerAnswers[i].category;
 
                 geo.checkIfExists(randomLetter, category, term, dataPlayer => { // players answers
-                    geo.randomTerm(randomLetter, category, dataComputer => { // generate random computer answers
+                    geo.generateComputerAnswer(category, randomLetter, dataComputer => { // generate random computer answers
 
                         // Add all info (about user's and computer's answers and scores)  to array
                         allInfo.push(calc.calculateScore(category, term, dataPlayer, dataComputer));
