@@ -263,6 +263,29 @@ export class GeoUI {
         return form;
     }
 
+    // Show new messages in chat
+    chatLi(text) {
+        let username = text.username;
+        let message = text.message;
+        let ul = document.getElementById('chat-ul');
+        let li = document.createElement('li');
+        let h5 = document.createElement('h5');
+        let span = document.createElement('span');
+        if(username == localStorage.username) {
+            li.classList.add('me');
+        } else {
+            span.classList.add('text-white');
+            h5.classList.add('text-white');
+        }
+        h5.textContent = username + ': ';
+        h5.classList.add('p-0');
+        span.textContent = message;
+        ul.append(li);
+        li.append(h5, span);
+        ul.scrollTop = ul.scrollHeight;
+
+    }
+
     // Show results after game (game.html)
     modalResult(allInfo, opponent = 'Kompjuter') {
         let modalResult = document.getElementById('modal-result');

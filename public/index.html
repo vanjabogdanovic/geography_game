@@ -68,10 +68,10 @@
     </nav>
     <div class="main">
     </div>
-    <div class="container position-relative">
-        <div class="card-deck">
-            <div class="card bg-white">
-                <div class="card-body">
+    <div class="container position-relative" id="index-container">
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 row">
+            <div class="col">
+                <div class="card bg-white lg">
                     <h5 class="text-center">Započni igru</h5>
                     <div class="img-wrapper">
                         <img class="img-responsive" src="images/play.png" alt="Card image cap">
@@ -79,7 +79,6 @@
                             <button data-toggle="modal" data-target="#modal" class="b-0" id="play-btn"><i class="fa fa-play fa-3x"></i></button>
                         </div>
                     </div>
-                    <p class="text-center pt-3">ili</p>
                     <form id="formNewUsername" autocomplete="off">
                         <fieldset class="form-group">
                             <label class="form-label ml-2 pl-1 pr-1" for="newUsername">Promeni username</label>
@@ -92,11 +91,11 @@
                     </div>
                 </div>
             </div>
-            <div class="card bg-white">
-                <div class="card-body">
+            <div class="col">
+                <div class="card bg-white lg">
                     <h5 class="text-center">Dodaj nov pojam</h5>
                     <img class="card-img-top" src="images/book.png" alt="Card image cap">
-                    <form class="pt-3" id="formAdd" autocomplete="off">
+                    <form id="formAdd" autocomplete="off">
                         <fieldset class="form-group">
                             <select class="form-control" id="categories">
                                 <option selected="true" value="" disabled>Izaberi kategoriju</option>
@@ -118,6 +117,24 @@
                     <div id="divNewTerm" class="text-center">
                         <!--  Error message  -->
                     </div>
+                </div>
+            </div>
+            <div class="col mb-3">
+                <div class="card bg-white lg">
+                    <h5 class="text-center">Chat</h5>
+                    <ul id="chat-ul">
+                        <li>
+                            <span class="text-white p-0">Dobrodošli! Pridružite se ćaskanju i pošaljite poruku.</span>
+                        </li>
+                        <!--  Messages  -->
+                    </ul>
+                    <form id="formChat" autocomplete="off">
+                        <fieldset class="form-group">
+                            <label class="form-label ml-2 pl-1 pr-1" for="chat-input">Nova poruka</label>
+                            <input type="text" class="form-control" id="chat-input">
+                        </fieldset>
+                        <button type="submit" class="btn btn-block mt-2">Pošalji</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -197,6 +214,7 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
 <!-- JS -->
+<script src="/socket.io/socket.io.js"></script>
 <script src="js/app.js" type="module"></script>
 </body>
 </html>

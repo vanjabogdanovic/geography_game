@@ -6,6 +6,7 @@
 body {
     position: relative;
 }
+
 /*Footer*/
 footer {
     z-index: 100;
@@ -61,13 +62,18 @@ nav i {
     z-index: -100;
 }
 
-.container {
-    width: 60% !important;
+#container {
+    margin-left: 20%;
+    max-width: 60% !important;
+}
+#index-container {
+    margin-left: 10%;
+    max-width: 80% !important;
 }
 
 /*Card and forms*/
 .card {
-    top: 100px;
+    top: 90px;
     max-height: 100%;
 }
 
@@ -76,13 +82,38 @@ nav i {
     margin-left: 12%;
 }
 
-#formAdd button, #formNewUsername button {
+#formAdd button, #formNewUsername button, #formChat button {
     background: rgb(38, 51, 83);
     color: white;
 }
 
-#formAdd button:hover, #formNewUsername button:hover {
+#formAdd button:hover, #formNewUsername button:hover, #formChat button:hover {
     background: rgb(40, 78, 151);
+}
+
+#chat-ul {
+    position: absolute;
+    bottom: 20%;
+}
+
+#formAdd {
+    padding-top: 10px;
+}
+
+#formChat, #formAdd, #formNewUsername {
+    position: absolute;
+    width: 100%;
+    padding: 0 20px;
+    bottom: 0;
+}
+
+#index-container h5 {
+    padding-top: 20px;
+}
+
+.lg {
+    height: 530px !important;
+    margin-bottom: 50px;
 }
 
 /*inputs*/
@@ -144,6 +175,34 @@ nav i {
     display: block;
     /* adjust 'height' to position overlay content vertically */
     height: 50%;
+}
+
+/*Chat*/
+#chat-ul {
+    position: absolute;
+    scroll-behavior: auto;
+    width: 100%;
+    top: 12%;
+    padding: 0 20px;
+    list-style-type: none;
+    overflow: hidden;
+    overflow-y: auto;
+}
+#chat-ul li {
+    background-color: #284E97;
+    margin-right: 20%;
+    padding: 5px;
+    border-radius: 8px;
+    border-top-left-radius: 0;
+    margin-bottom: 5px;
+}
+
+.me {
+    background-color: #d0d0d0 !important;
+    border-radius: 8px !important;
+    border-bottom-right-radius: 0 !important;
+    margin-right: 0 !important;
+    margin-left: 20%;
 }
 
 /*Leadbord*/
@@ -250,9 +309,15 @@ td img {
 }
 
 /*Mobiles and tablets*/
+@media only screen and (max-width: 1500px) {
+    .lg {
+        height: 445px !important;
+    }
+}
+
 @media only screen and (max-width: 1000px) {
-    .container {
-        width: 100% !important;
+    .lg {
+        height: 450px !important;
     }
 
     .img-overlay {

@@ -163,10 +163,10 @@ export class Geo {
             .then(snapshot => {
                 let chance = Math.random();
                 if (chance > 0.2) {
-                    console.log(snapshot.docs.length);
                     const randomIndex = Math.floor(Math.random() * snapshot.docs.length);
-                    term = snapshot.docs[randomIndex].data().pojam;
-                    term = term && term !== undefined ? term : '';
+                    term = snapshot.docs[randomIndex];
+                    term = term && term !== undefined ? term.data().pojam : '';
+                    console.log(term);
                 }
                 callback(term);
             })

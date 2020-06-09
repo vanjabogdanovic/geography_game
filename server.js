@@ -18,9 +18,13 @@ let username1;
 
 // Run when user connects
 io.on('connection', socket => {
+    socket.on('msg', msg => {
+        io.emit('chat', msg);
+    });
 
     if(waitingPlayer) {
         socket.on('username', username2 => {
+
             if(username1 == username2) {
                 // Don't start game if usernames are the same
                 waitingPlayer = socket;

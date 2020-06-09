@@ -5,6 +5,9 @@ let sweetAlert = new Sweetalert();
 import {String} from "./String.js";
 let str = new String();
 
+// Get socket
+const socket = io();
+
 // Get DOM elements
 let helloSpan = document.getElementById('hello');
 let formAdd = document.getElementById('formAdd');
@@ -16,6 +19,8 @@ let body = document.querySelector('body');
 let divComputer = document.getElementById('div-computer');
 let divPlayer = document.getElementById('div-player');
 let btnModal = document.getElementById('btn-modal');
+let chatForm = document.getElementById('formChat');
+let chatInput = document.getElementById('chat-input');
 
 // Enter username
 if(!localStorage.username) {
@@ -111,6 +116,16 @@ btnModal.addEventListener('click', () => {
     if(divPlayer.classList.contains('selected-div')) {
         window.location = "live-game.html";
     }
+});
+
+// Chat
+chatForm.addEventListener('submit', e => {
+    e.preventDefault();
+    socket.emit('msg', {username: localStorage.username, message: chatInput.value});
+    chatForm.reset();
+});
+socket.on('chat', chat => {
+    ui.chatLi(chat);
 });
 
 // ENTER
