@@ -9,7 +9,7 @@ class LiveGameServer {
                 this._onTurn(index, turn);
             })
         });
-        this._disconnected = this._players.forEach(socket => {
+        this._players.forEach(socket => {
             socket.on('disconnect', () => {
                 io.emit('disconnected', 'disconnected');
             });

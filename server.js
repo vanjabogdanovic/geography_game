@@ -18,21 +18,26 @@ let username1;
 
 // Run when user connects
 io.on('connection', socket => {
+
     socket.on('msg', msg => {
         io.emit('chat', msg);
     });
 
     if(waitingPlayer) {
         socket.on('username', username2 => {
-
-            if(username1 == username2) {
+            console.log(username1, username2);
+            if(username1 == username2 || username1 == undefined) {
+                username1 = username2;
                 // Don't start game if usernames are the same
                 waitingPlayer = socket;
                 waitingPlayer.emit('message', 'Sačеkajte svog protivnika...');
+                console.log(username1, username2);
+
             } else {
                 // Start game if usernames are not the same
                 let liveGame = new LiveGame(waitingPlayer, socket, io);
                 waitingPlayer = null;
+                username1 = undefined;
                 liveGame.getRandomLetter(io);
             }
         })
@@ -44,7 +49,6 @@ io.on('connection', socket => {
         });
         waitingPlayer.emit('message', 'Sačеkajte svog protivnika...')
     }
-
 });
 
 const PORT = process.env.PORT || 8080;

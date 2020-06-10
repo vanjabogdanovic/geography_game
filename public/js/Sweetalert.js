@@ -58,4 +58,26 @@ export class Sweetalert {
         });
     }
 
+    // Index page input alerts - success
+    alertSuccess(text) {
+        Swal.fire({
+            icon: 'success',
+            title: text,
+            showConfirmButton: true,
+            confirmButtonColor: 'rgb(38, 51, 83)',
+            timer: 1500
+        })
+    }
+
+    // Index page input alerts - warning
+    alertWarning(text) {
+        Swal.fire({
+            icon: 'error',
+            title: text,
+            showConfirmButton: true,
+            confirmButtonColor: 'rgb(38, 51, 83)',
+            timer: 3000
+        })
+    }
+
 }

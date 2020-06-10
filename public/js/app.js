@@ -12,7 +12,6 @@ const socket = io();
 let helloSpan = document.getElementById('hello');
 let formAdd = document.getElementById('formAdd');
 let formNewUsername = document.getElementById('formNewUsername');
-let divUpdatedUsername = document.getElementById('divUpdatedUsername');
 let divNewTerm = document.getElementById('divNewTerm');
 let hideDiv = document.getElementById('hide');
 let body = document.querySelector('body');
@@ -63,17 +62,17 @@ formAdd.addEventListener('submit', e => {
                     if(!data) {
                         geo.newTerm(category, str.stringCheck(term));
                         formAdd.reset();
-                        ui.warningText(divNewTerm, 'rgb(23, 44, 87)', 'Uspešno dodat pojam: ' + term);
+                        sweetAlert.alertSuccess('Uspešno dodat pojam: ' + term);
                     } else {
                         formAdd.reset();
-                        ui.warningText(divNewTerm, 'red', 'Pojam "' + term + '" već postoji!');
+                        sweetAlert.alertWarning('Pojam "' + term + '" već postoji!');
                     }
                 });
             } else {
-                ui.warningText(divNewTerm, 'red', 'Izaberite kategoriju!');
+                sweetAlert.alertWarning('Izaberite kategoriju!');
             }
         } else {
-            ui.warningText(divNewTerm, 'red', 'Polje "Napiši nov pojam" ne sme biti prazno!');
+            sweetAlert.alertWarning('Polje "Napiši nov pojam" ne sme biti prazno!');
         }
     }
 });
@@ -86,10 +85,10 @@ formNewUsername.addEventListener('submit', e => {
     if(str.empty(newUsername)) {
         geo.updateUsername(newUsername);
         formNewUsername.reset();
-        ui.warningText(divUpdatedUsername, 'rgb(23, 44, 87)', 'Username uspešno promenjen: ' + newUsername);
+        sweetAlert.alertSuccess('Username uspešno promenjen: ' + newUsername);
         ui.hello(helloSpan);
     } else {
-        ui.warningText(divUpdatedUsername, 'red', 'Polje "Promeni username" ne sme biti prazno!');
+        sweetAlert.alertWarning('Polje "Promeni username" ne sme biti prazno!');
     }
 });
 
@@ -125,7 +124,10 @@ chatForm.addEventListener('submit', e => {
     chatForm.reset();
 });
 socket.on('chat', chat => {
-    ui.chatLi(chat);
+    // if message is not empty, show message
+    if(str.empty(chat.message)) {
+        ui.chatLi(chat);
+    }
 });
 
 // ENTER
