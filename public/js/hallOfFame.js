@@ -30,7 +30,7 @@ sweetAlert.gameRules();
 // geo.mostActiveUser( users => {
 //     ui.leaderboard(d1, users);
 // });
-//
+
 // // Show users with best score
 geo.bestScore(score => {
     ui.leaderboard(trophyScoreDiv, score);

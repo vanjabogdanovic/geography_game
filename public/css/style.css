@@ -93,7 +93,7 @@ nav i {
 
 #chat-ul {
     position: absolute;
-    bottom: 20%;
+    bottom: 23%;
 }
 
 #formAdd {
@@ -165,7 +165,7 @@ nav i {
     position: absolute;
     bottom: 45%;
     left: 27%;
-    top: 25%;
+    top: 23%;
     right: 25%;
     text-align: center;
 }
@@ -173,7 +173,6 @@ nav i {
 .img-overlay:before {
     content: ' ';
     display: block;
-    /* adjust 'height' to position overlay content vertically */
     height: 50%;
 }
 
@@ -221,6 +220,10 @@ td img {
 }
 #pointsBtn {
     margin-left: 10%;
+}
+
+#modal-result {
+    margin-top: 30px;
 }
 
 /*Modal start game*/
@@ -308,7 +311,7 @@ td img {
     transform: translate(0);
 }
 
-/*Mobiles and tablets*/
+/*Mobiles*/
 @media only screen and (max-width: 1500px) {
     .lg {
         height: 445px !important;
@@ -347,22 +350,46 @@ td img {
     #pointsBtn {
         margin-left: 0;
     }
+
+    #container {
+        margin-left: 0;
+        max-width: 100% !important;
+    }
+
 }
 
 @media only screen and (max-width: 500px) {
+    .first-card {
+        height: 360px !important;
+    }
+
+    .second-card {
+        height: 410px !important;
+    }
+
     .navbar-brand {
-        font-size: 20px;
+        font-size: 18px;
+        padding-left: 0 !important;
     }
 
     .img-overlay {
         bottom: 40%;
         left: 27%;
-        top: 25%;
+        top: 11%;
         right: 25%;
     }
 
     #hello {
         padding: 0 !important;
+    }
+
+    #score1 div.col-2 {
+        max-width: 100% !important;
+        padding: 5px;
+    }
+
+    #modal-result .dn{
+        display: none;
     }
 
 }
@@ -371,7 +398,7 @@ td img {
     .img-overlay {
         bottom: 37%;
         left: 27%;
-        top: 25%;
+        top: 22%;
         right: 25%;
     }
 }
