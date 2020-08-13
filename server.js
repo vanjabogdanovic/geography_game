@@ -26,7 +26,7 @@ io.on('connection', socket => {
     if(waitingPlayer) {
         socket.on('username', username2 => {
             console.log(username1, username2);
-            if(username1 == username2 || username1 == undefined) {
+            if(username1 === username2 || username1 === undefined) {
                 username1 = username2;
                 // Don't start game if usernames are the same
                 waitingPlayer = socket;

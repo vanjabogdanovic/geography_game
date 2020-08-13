@@ -104,6 +104,7 @@ export class GeoUI {
         let card1 = this.card(cardDeck);
         let cardBody1 = this.cardBody(card1);
         let letter = document.createElement('h3');
+        letter.setAttribute('id', 'random-letter');
         cardDeck.classList.add('mb-2');
         cardBody1.classList.add('text-center');
         cardBody1.append(letter);

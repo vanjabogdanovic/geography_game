@@ -1,12 +1,17 @@
 import {GeoUI} from "./GeoUI.js";
+
 let ui = new GeoUI();
 import {Geo} from "./Geo.js";
+
 let geo = new Geo(localStorage.username);
 import {Sweetalert} from "./Sweetalert.js";
+
 let sweetAlert = new Sweetalert();
 import {Calculate} from "./Calculate.js";
+
 let calc = new Calculate();
 import {String} from "./String.js";
+
 let str = new String();
 
 // Get socket
@@ -46,7 +51,7 @@ socket.emit('username', localStorage.username);
 sweetAlert.gameRules();
 
 socket.on('message', message => {
-    if (message != 'start') {
+    if (message !== 'start') {
 
         // Waiting for opponent
         h3.classList.add('text-center');
@@ -65,67 +70,82 @@ socket.on('message', message => {
         });
 
         // Start game countdown
-        let count = 3;
-        let timerStart = setInterval(() => {
-            h3.classList.add('text-center');
-            h3.textContent = 'Igra počinje za: ' + count;
-            cardBody.append(h3);
-            count--;
+        // let count = 3;
+        // let timerStart = setInterval(() => {
+        //     h3.classList.add('text-center');
+        //     h3.textContent = 'Igra počinje za: ' + count;
+        //     cardBody.append(h3);
+        //     count--;
+        //
+        //     // Start game if count < 0
+        //     if (count < 0) {
+        //         clearInterval(timerStart);
+        cardDeck.removeChild(card);
 
-            // Start game if count < 0
-            if (count < 0) {
-                clearInterval(timerStart);
-                cardDeck.removeChild(card);
+        // SHOW random letter and countdown in card deck
+        let printLetter = ui.letterCard(cardDeck);
+        let printCountdown = ui.countdownCard(cardDeck);
+        // SHOW card for game inputs
+        let submitAnswersForm = ui.gameCard(container);
+        let submitAnswersBtn = submitAnswersForm.lastElementChild;
 
-                // SHOW random letter and countdown in card deck
-                let printLetter = ui.letterCard(cardDeck);
-                let printCountdown = ui.countdownCard(cardDeck);
-                // SHOW card for game inputs
-                let submitAnswersForm = ui.gameCard(container);
-                let submitAnswersBtn = submitAnswersForm.lastElementChild;
+        // Animate random letter
+        let duration = 0;
+        let timerCountdown;
+        ui.disableSubmit(submitAnswersBtn);
 
-                // Animate random letter
-                let duration = 0;
-                let timerCountdown;
-                ui.disableSubmit(submitAnswersBtn);
+        let timer = setInterval(() => {
+            let letter = calc.randomLetter();
+            printLetter.textContent = 'Odabrano slovo: ' + letter;
+            printLetter.style.color = 'darkred';
+            if (duration > 80) {
+                ui.enableSubmit(submitAnswersBtn);
+                printLetter.textContent = 'Odabrano slovo: ' + randomLetter;
+                printLetter.style.color = '#263353';
+                clearInterval(timer);
 
-                let timer = setInterval( () => {
-                    let letter = calc.randomLetter();
-                    printLetter.textContent = 'Odabrano slovo: ' + letter;
-                    printLetter.style.color = 'darkred';
-                    if(duration > 80) {
-                        ui.enableSubmit(submitAnswersBtn)
-                        printLetter.textContent = 'Odabrano slovo: ' + randomLetter;
-                        printLetter.style.color = '#263353';
-                        clearInterval(timer);
-
-                        // Countdown
-                        timerCountdown = ui.countdown(printCountdown, submitAnswersBtn);
-                    }
-                    duration++;
-                }, 30);
-
-                // If submit button is triggered (send answers button)
-                submitAnswersForm.addEventListener('submit', e => {
-                    e.preventDefault();
-                    clearInterval(timerCountdown);
-                    submitAnswersBtn.disabled = true;
-
-                    if(disconnected == 'disconnected') {
-
-                        printCountdown.textContent = "Vaša rešenja su poslata! Drugi igrač je diskonektovan!";
-
-                        computerGame(printCountdown, randomLetter);
-
-                    } else {
-                        // Notification - results are sent
-                        printCountdown.textContent = 'Vaša rešenja su poslata! Sačekajte odgovore protivnika.';
-
-                        multiplayerGame(socket, randomLetter);
-                    }
-                });
+                // Countdown
+                timerCountdown = ui.countdown(printCountdown, submitAnswersBtn);
             }
-        }, 1000);
+            duration++;
+        }, 30);
+
+        // If submit button is triggered (send answers button)
+        submitAnswersForm.addEventListener('submit', e => {
+            e.preventDefault();
+            clearInterval(timerCountdown);
+            submitAnswersBtn.disabled = true;
+
+            if (disconnected === 'disconnected') {
+
+                printCountdown.textContent = "Vaša rešenja su poslata! Drugi igrač je diskonektovan!";
+                let randomLetter = document.getElementById('random-letter').innerHTML;
+                randomLetter = randomLetter.substr(randomLetter.length - 2).trim();
+                computerGame(printCountdown, randomLetter);
+
+            } else {
+                // Notification - results are sent
+                printCountdown.textContent = 'Vaša rešenja su poslata! Sačekajte odgovore protivnika.';
+
+                let randomLetter = document.getElementById('random-letter').innerHTML;
+                randomLetter = randomLetter.substr(randomLetter.length - 2).trim();
+
+                multiplayerGame(socket, randomLetter);
+
+                let gameOver = ''
+                socket.on('gameover', gameover => {
+                    gameOver += gameover;
+                    socket.on('disconnected', disconnected => {
+                        if (gameOver === '' && disconnected === 'disconnected') {
+                            computerGame(printCountdown, randomLetter);
+                        }
+                    })
+                });
+
+            }
+        });
+        // }
+        // }, 1000);
 
         // If opponent is disconnected, continue game with computer
         let computerGame = (printCountdown, randomLetter) => {
@@ -177,7 +197,7 @@ socket.on('message', message => {
                         allInfo.push(calc.calculateScore(category, term, dataPlayer, dataComputer));
 
                         // If loop has reached last element, then show modal with result
-                        if (i == playerAnswers.length - 1) {
+                        if (i === playerAnswers.length - 1) {
                             printResult(allInfo);
                         }
                     });
@@ -230,7 +250,7 @@ socket.on('message', message => {
                 let player1;
                 let player2;
                 // Check what are your's and opponents answers
-                if(answers[0][0].username == localStorage.username) {
+                if (answers[0][0].username === localStorage.username) {
                     player1 = answers[0];
                     player2 = answers[1]
                 } else {
@@ -255,7 +275,7 @@ socket.on('message', message => {
                             allInfo.push(calculateScore(category, playerTerm, opponentTerm, dataPlayer, dataOpponent));
 
                             // If loop has reached last element, then show modal with result
-                            if (i == playerAnswers.length - 1) {
+                            if (i === playerAnswers.length - 1) {
                                 printResult(allInfo, player2[0].username);
                             }
                         })
@@ -287,14 +307,13 @@ socket.on('message', message => {
             } else if (!dataPlayer) { // If player don't know the answer
                 data.player.score = 0;
                 data.computer.score = 15;
-            } else if (playerTerm == opponentTerm) { // If both computer and player have the same answer
+            } else if (playerTerm === opponentTerm) { // If both computer and player have the same answer
                 data.player.score = 5;
                 data.computer.score = 5;
-            } else if (playerTerm != opponentTerm) { // If both computer and player know the answer, but it is not the same word
+            } else if (playerTerm !== opponentTerm) { // If both computer and player know the answer, but it is not the same word
                 data.player.score = 10;
                 data.computer.score = 10;
             }
-
             return data;
         };
 
@@ -314,7 +333,7 @@ socket.on('message', message => {
 
             // Close modal by clicking outside of modal
             window.addEventListener('click', e => {
-                if (e.target == modalResult) {
+                if (e.target === modalResult) {
                     modalResult.classList.remove('d-block');
                     window.location = 'index.html'; // return to index page
                 }

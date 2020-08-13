@@ -166,7 +166,6 @@ export class Geo {
                     const randomIndex = Math.floor(Math.random() * snapshot.docs.length);
                     term = snapshot.docs[randomIndex];
                     term = term && term !== undefined ? term.data().pojam : '';
-                    console.log(term);
                 }
                 callback(term);
             })

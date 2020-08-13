@@ -32,6 +32,6 @@ sweetAlert.gameRules();
 // });
 
 // // Show users with best score
-geo.bestScore(score => {
-    ui.leaderboard(trophyScoreDiv, score);
-});
+// geo.bestScore(score => {
+//     ui.leaderboard(trophyScoreDiv, score);
+// });

@@ -11,7 +11,11 @@ class LiveGameServer {
         });
         this._players.forEach(socket => {
             socket.on('disconnect', () => {
-                io.emit('disconnected', 'disconnected');
+                this._players.forEach(sock => {
+                    if (socket !== sock) {
+                        sock.emit('disconnected', 'disconnected');
+                    }
+                });
             });
         })
     }
@@ -31,8 +35,10 @@ class LiveGameServer {
 
     _checkGameOver() {
         const turns = this._turns;
+        this._players.forEach(sock => sock.emit('gameover', ''));
         if( turns[0] && turns[1]) {
             this._sendToPlayers(turns);
+            this._players.forEach(sock => sock.emit('gameover', 'gameover'));
             this._turns = [null, null];
         }
     }

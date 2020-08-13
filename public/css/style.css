@@ -163,7 +163,7 @@ nav i {
 
 .img-overlay {
     position: absolute;
-    bottom: 45%;
+    bottom: 46%;
     left: 27%;
     top: 23%;
     right: 25%;
@@ -220,10 +220,6 @@ td img {
 }
 #pointsBtn {
     margin-left: 10%;
-}
-
-#modal-result {
-    margin-top: 30px;
 }
 
 /*Modal start game*/
@@ -319,12 +315,16 @@ td img {
 }
 
 @media only screen and (max-width: 1000px) {
+    .main {
+        bottom: -72px;
+    }
+
     .lg {
         height: 450px !important;
     }
 
     .img-overlay {
-        bottom: 60%;
+        bottom: 54%;
         left: 27%;
         top: 25%;
         right: 25%;
@@ -356,6 +356,12 @@ td img {
         max-width: 100% !important;
     }
 
+}
+
+@media only screen and (max-height: 800px) {
+    .main {
+        bottom: -72px;
+    }
 }
 
 @media only screen and (max-width: 500px) {
@@ -395,6 +401,9 @@ td img {
 }
 /**/
 @media only screen and (min-width: 1800px) {
+    .main {
+        bottom: -72px;
+    }
     .img-overlay {
         bottom: 37%;
         left: 27%;
