@@ -3,17 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="aaa44792-b379-47be-9ae4-fb1da2efaab1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LiveGameServer.js" beforeDir="false" afterPath="$PROJECT_DIR$/LiveGameServer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/game.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/hall-of-fame.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/hall-of-fame.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/Geo.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/Geo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/GeoUI.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/GeoUI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/hallOfFame.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/hallOfFame.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/liveGame.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/liveGame.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/live-game.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/live-game.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +88,8 @@
       <workItem from="1592472412906" duration="10981000" />
       <workItem from="1597230095983" duration="4992000" />
       <workItem from="1597241021818" duration="21436000" />
-      <workItem from="1597350212353" duration="142000" />
+      <workItem from="1597350212353" duration="1114000" />
+      <workItem from="1597764320340" duration="1019000" />
     </task>
     <servers />
   </component>
