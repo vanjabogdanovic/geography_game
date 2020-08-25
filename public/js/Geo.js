@@ -7,6 +7,7 @@ export class Geo {
         this.korisnik = korisnik;
         this.geo = db.collection('pojmovi');
         this.game = db.collection('rezultati');
+        this.sugg = db.collection('predlozi');
         this.users = [];
         this.score = [];
     }
@@ -29,8 +30,8 @@ export class Geo {
             pojam: term,
             vreme: firebase.firestore.Timestamp.fromDate(time)
         };
-        //adding new document to this.chats(it contains whole collection from firebase)
-        let response = await this.geo.add(newDoc);
+        //adding new document
+        let response = await this.sugg.add(newDoc);
         return response;
     }
 
@@ -198,7 +199,7 @@ export class Geo {
                 broj_poena: data ? data.broj_poena + score : score,
                 datum: firebase.firestore.Timestamp.fromDate(time)
             };
-            //adding new document to this.chats(it contains whole collection from firebase)
+            //adding new document
             if(doc) {
                 return this.game.doc(docId).update(newDoc);
             } else {

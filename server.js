@@ -23,16 +23,17 @@ io.on('connection', socket => {
         io.emit('chat', msg);
     });
 
-    if(waitingPlayer) {
+    if (waitingPlayer) {
         socket.on('username', username2 => {
-            console.log(username1, username2);
             if(username1 === username2 || username1 === undefined) {
                 username1 = username2;
                 // Don't start game if usernames are the same
                 waitingPlayer = socket;
                 waitingPlayer.emit('message', 'Sačеkajte svog protivnika...');
                 console.log(username1, username2);
-
+                socket.on('disconnect', () => {
+                    username1 = undefined;
+                });
             } else {
                 // Start game if usernames are not the same
                 let liveGame = new LiveGame(waitingPlayer, socket, io);

@@ -55,7 +55,7 @@ formAdd.addEventListener('submit', e => {
         // Check if input is empty
         if(str.empty(term)) {
             // Check if category is selected
-            if(category != "") {
+            if(category !== "") {
                 let letter = str.stringCheck(str.firstLetter(term));
                 geo.checkIfExists(letter, category, str.stringCheck(term), data => {
                     // Check if term already exists
